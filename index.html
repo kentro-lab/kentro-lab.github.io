@@ -424,71 +424,109 @@
             }
             .knowledge-section { margin-bottom: 18px; }
 
-            /* Swipe indicators */
+            /* Swipe/Click navigation - positioned under message card */
             .swipe-container {
                 display: flex !important;
                 align-items: center;
-                justify-content: center;
-                gap: 20px;
-                padding: 12px 15px;
-                background: rgba(0,0,0,0.2);
+                justify-content: space-between;
+                padding: 12px 20px;
+                background: rgba(255,255,255,0.95);
+                border-radius: 12px;
+                margin: 10px 10px 0 10px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
             .swipe-arrow {
                 display: flex;
                 align-items: center;
                 gap: 8px;
-                color: rgba(255,255,255,0.6);
-                font-size: 13px;
+                color: #374151;
+                font-size: 14px;
+                font-weight: 500;
+                cursor: pointer;
+                padding: 10px 16px;
+                border-radius: 8px;
+                background: #f3f4f6;
+                border: none;
+                transition: all 0.2s ease;
+            }
+            .swipe-arrow:hover {
+                background: #e5e7eb;
+                color: #111827;
+            }
+            .swipe-arrow:active {
+                transform: scale(0.97);
+                background: #d1d5db;
+            }
+            .swipe-arrow.disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+            .swipe-arrow.disabled:hover {
+                background: #f3f4f6;
+                color: #374151;
             }
             .swipe-arrow svg {
-                width: 24px;
-                height: 24px;
-                opacity: 0.7;
+                width: 20px;
+                height: 20px;
             }
             .swipe-arrow.prev svg { animation: swipeLeft 1.5s ease-in-out infinite; }
             .swipe-arrow.next svg { animation: swipeRight 1.5s ease-in-out infinite; }
+            .swipe-arrow.disabled svg { animation: none; }
+
+            .swipe-hint-text {
+                color: #9ca3af;
+                font-size: 11px;
+                text-align: center;
+            }
 
             @keyframes swipeLeft {
                 0%, 100% { transform: translateX(0); }
-                50% { transform: translateX(-5px); }
+                50% { transform: translateX(-3px); }
             }
             @keyframes swipeRight {
                 0%, 100% { transform: translateX(0); }
-                50% { transform: translateX(5px); }
+                50% { transform: translateX(3px); }
             }
 
-            /* Message changes summary */
+            /* Message changes summary - inside white card, needs dark text */
             .message-changes {
                 display: block !important;
-                background: rgba(34, 197, 94, 0.15);
-                border: 1px solid rgba(34, 197, 94, 0.3);
+                background: linear-gradient(135deg, #dcfce7, #d1fae5);
+                border: 2px solid #22c55e;
                 border-radius: 8px;
-                padding: 10px 12px;
+                padding: 12px 14px;
                 margin-top: 12px;
-                font-size: 12px;
+                font-size: 13px;
             }
             .message-changes-title {
-                font-weight: 600;
-                color: #22c55e;
-                margin-bottom: 6px;
+                font-weight: 700;
+                color: #166534;
+                margin-bottom: 8px;
                 display: flex;
                 align-items: center;
                 gap: 6px;
+                font-size: 13px;
+            }
+            .message-changes-title svg {
+                stroke: #166534;
             }
             .message-changes-list {
-                color: rgba(255,255,255,0.9);
-                line-height: 1.5;
+                color: #1e293b;
+                line-height: 1.6;
             }
             .change-item {
                 display: flex;
                 align-items: flex-start;
-                gap: 6px;
-                margin-bottom: 4px;
+                gap: 8px;
+                margin-bottom: 6px;
+                color: #374151;
+                font-size: 13px;
             }
             .change-item::before {
                 content: "✓";
-                color: #22c55e;
+                color: #16a34a;
                 font-weight: bold;
+                font-size: 14px;
             }
         }
 
@@ -798,6 +836,23 @@
                             </div>
 
                             <button class="nav-btn next" onclick="navigate(1)" ${currentIndex >= DATA.messages.length - 1 ? 'disabled' : ''}>→</button>
+
+                            <!-- Mobile navigation - directly under message card -->
+                            <div class="swipe-container">
+                                <button class="swipe-arrow prev ${currentIndex === 0 ? 'disabled' : ''}" onclick="navigate(-1)" ${currentIndex === 0 ? 'disabled' : ''}>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M19 12H5M12 19l-7-7 7-7"/>
+                                    </svg>
+                                    <span>Previous</span>
+                                </button>
+                                <div class="swipe-hint-text">Tap or swipe</div>
+                                <button class="swipe-arrow next ${currentIndex >= DATA.messages.length - 1 ? 'disabled' : ''}" onclick="navigate(1)" ${currentIndex >= DATA.messages.length - 1 ? 'disabled' : ''}>
+                                    <span>Next</span>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
 
                         <div class="family-column ${activeMobileTab === 'mahtab-ali' || activeMobileTab === 'shared' ? 'mobile-visible' : ''}">
@@ -807,23 +862,6 @@
                                 ${renderFamilyPanel('mahtab-ali', k, ni)}
                                 ${renderSharedPanel(k.shared, ni, DATA.pending_decisions)}
                             ` : ''}
-                        </div>
-                    </div>
-
-                    <!-- Mobile swipe navigation with visual indicators -->
-                    <div class="swipe-container">
-                        <div class="swipe-arrow prev" ${currentIndex === 0 ? 'style="opacity:0.3"' : ''}>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M19 12H5M12 19l-7-7 7-7"/>
-                            </svg>
-                            <span>Previous</span>
-                        </div>
-                        <div style="color:rgba(255,255,255,0.4);font-size:12px;">Swipe message</div>
-                        <div class="swipe-arrow next" ${currentIndex >= DATA.messages.length - 1 ? 'style="opacity:0.3"' : ''}>
-                            <span>Next</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
                         </div>
                     </div>
 
