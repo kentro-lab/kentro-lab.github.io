@@ -84,26 +84,20 @@
       color: var(--primary);
     }
 
-    .agent-k-intro {
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
+    .hero-subtitle {
       margin-top: 24px;
-    }
-
-    .agent-k-icon {
-      width: 48px;
-      height: 48px;
-      flex-shrink: 0;
-      color: var(--primary);
-      margin-top: 2px;
-    }
-
-    .agent-k-intro p {
       font-size: 18px;
       line-height: 1.6;
       color: var(--secondary);
       max-width: 520px;
+    }
+
+    .agent-k-inline {
+      display: inline-block;
+      width: 28px;
+      height: 28px;
+      vertical-align: -5px;
+      color: var(--primary);
     }
 
     .hero .cta {
@@ -263,32 +257,7 @@
 
   <section class="hero">
     <h1>AI project management for construction</h1>
-    <div class="agent-k-intro">
-      <svg class="agent-k-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <mask id="agent-k-mask">
-            <rect width="100" height="100" fill="white"/>
-            <!-- Visor -->
-            <rect x="34" y="24" width="32" height="6" rx="3" fill="black"/>
-            <!-- Collar V-notch -->
-            <polygon points="43,48 50,58 57,48" fill="black"/>
-            <!-- K vertical stroke -->
-            <line x1="48" y1="58" x2="48" y2="82" stroke="black" stroke-width="2.8" stroke-linecap="round"/>
-            <!-- K upper arm -->
-            <line x1="48" y1="66" x2="55" y2="58" stroke="black" stroke-width="2.8" stroke-linecap="round"/>
-            <!-- K lower arm -->
-            <line x1="48" y1="66" x2="55" y2="76" stroke="black" stroke-width="2.8" stroke-linecap="round"/>
-          </mask>
-        </defs>
-        <g mask="url(#agent-k-mask)">
-          <!-- Head -->
-          <circle cx="50" cy="28" r="16" fill="currentColor"/>
-          <!-- Body -->
-          <path d="M20,68 Q20,52 35,48 L50,44 L65,48 Q80,52 80,68 L80,85 L20,85 Z" fill="currentColor"/>
-        </g>
-      </svg>
-      <p>Meet Agent K — your AI project manager that captures photos, manages tasks through conversation, delivers intelligent briefings, and keeps your entire team aligned.</p>
-    </div>
+    <p class="hero-subtitle">Meet <svg class="agent-k-inline" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><defs><mask id="agent-k-mask"><rect width="100" height="100" fill="white"/><rect x="34" y="24" width="32" height="6" rx="3" fill="black"/><polygon points="43,48 50,58 57,48" fill="black"/><line x1="48" y1="58" x2="48" y2="82" stroke="black" stroke-width="2.8" stroke-linecap="round"/><line x1="48" y1="66" x2="55" y2="58" stroke="black" stroke-width="2.8" stroke-linecap="round"/><line x1="48" y1="66" x2="55" y2="76" stroke="black" stroke-width="2.8" stroke-linecap="round"/></mask></defs><g mask="url(#agent-k-mask)"><circle cx="50" cy="28" r="16" fill="currentColor"/><path d="M20,68 Q20,52 35,48 L50,44 L65,48 Q80,52 80,68 L80,85 L20,85 Z" fill="currentColor"/></g></svg> — your AI project manager that captures photos, manages tasks through conversation, delivers intelligent briefings, and keeps your entire team aligned.</p>
     <a href="mailto:hello@kentrolabs.ai" class="cta">Request Early Access</a>
   </section>
 
