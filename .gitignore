@@ -1,8 +1,5 @@
 # Internal working material — NOT for the public GitHub Pages site.
 # Kept locally, never published: contains licensed third-party data
 # (Coresignal-derived company data), competitor screenshots, and internal
-# strategy/planning notes.
-/candidates/
-/research/
-/strategy/
-/progress.md
+# strategy/planning notes and homepage candidates.
+/_internal/
