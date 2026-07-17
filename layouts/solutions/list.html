@@ -1,0 +1,31 @@
+{{ define "main" }}
+<main>
+    <article>
+        <header class="mb-4 bg-primary-600">
+            <span class="py-96">
+                <h1 class="py-16 text-5xl font-black text-center text-white capitalize">
+                    {{ .Title }}
+                </h1>
+            </span>
+        </header>
+        {{ with .Content }}
+        <div class="px-6 mx-auto mt-8 max-w-3xl text-lg text-center text-gray-700 dark:text-gray-300">
+            {{- . -}}
+        </div>
+        {{ end }}
+        <div class="grid gap-8 px-6 py-12 mx-auto mt-4 max-w-7xl md:grid-cols-3">
+            {{ range .Pages.ByWeight }}
+            <a href="{{ .RelPermalink }}" class="flex flex-col p-8 h-full bg-white rounded-2xl border border-gray-200 shadow-sm transition dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:border-primary-300">
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white">{{ .Title }}</h2>
+                {{ with .Params.tagline }}<p class="mt-2 text-lg font-semibold text-primary-600 dark:text-primary-400">{{ . }}</p>{{ end }}
+                <p class="mt-4 text-base leading-7 text-gray-700 dark:text-gray-300">{{ .Description }}</p>
+                <span class="mt-6 text-sm font-semibold text-primary-600 dark:text-primary-300">Learn more &rarr;</span>
+            </a>
+            {{ end }}
+        </div>
+        <div class="px-6 pb-16 mx-auto max-w-3xl text-center">
+            <a href="{{ .Site.Params.discovery_call_url }}" class="inline-block px-6 py-3 text-base font-semibold text-white rounded-lg shadow bg-primary-600 hover:bg-primary-700 transition">Book a discovery call</a>
+        </div>
+    </article>
+</main>
+{{ end }}
