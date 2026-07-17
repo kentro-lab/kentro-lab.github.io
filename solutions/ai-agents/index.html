@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agents for Construction — An AI Teammate That Does the Routine Work | Kentro AI Labs</title>
+  <meta name="description" content="A custom AI agent that chases subs for lien waivers and insurance certs, follows up until they respond, validates and files them, and flags only the exceptions.">
+  <link rel="canonical" href="https://kentrolabs.ai/solutions/ai-agents/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kentrolabs.ai/solutions/ai-agents/">
+  <meta property="og:title" content="AI Agents for Construction — An AI Teammate That Does the Routine Work | Kentro AI Labs">
+  <meta property="og:description" content="A custom AI agent that chases subs for lien waivers and insurance certs, follows up until they respond, validates and files them, and hands you only the exceptions.">
+  <meta property="og:site_name" content="Kentro AI Labs">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AI Agents for Construction — An AI Teammate That Does the Routine Work">
+  <meta name="twitter:description" content="A custom AI agent that chases subs for lien waivers and insurance certs, follows up until they respond, validates and files them, and hands you only the exceptions.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23E0562A'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='20' font-weight='700' fill='%23FFFFFF' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --white: #FFFFFF;
+      --surface: #F9FAFB;
+      --ink: #101828;
+      --ink-2: #475467;
+      --line: #E4E7EC;
+      --orange: #E0562A;
+      --orange-deep: #B8451E;
+      --maxw: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', sans-serif; letter-spacing: -0.02em; line-height: 1.1; }
+
+    a { color: inherit; }
+
+    /* ---- utility ---- */
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding-left: 32px; padding-right: 32px; }
+
+    .eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+    .eyebrow.muted { color: var(--ink-2); }
+
+    .skip-link {
+      position: absolute; left: 16px; top: -60px;
+      background: var(--ink); color: var(--white);
+      padding: 10px 18px; border-radius: 8px; z-index: 100;
+      font-weight: 600; font-size: 14px; text-decoration: none;
+      transition: top 0.15s;
+    }
+    .skip-link:focus { top: 16px; }
+
+    a:focus-visible, button:focus-visible, .btn:focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    /* ---- buttons ---- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px; font-weight: 600;
+      padding: 14px 26px; border-radius: 10px;
+      text-decoration: none; cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+      border: 1.5px solid transparent;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-deep); }
+    .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+    .btn-outline:hover { background: var(--ink); color: var(--white); }
+    .btn-ghost-light { background: transparent; color: var(--white); border-color: rgba(255,255,255,0.4); }
+    .btn-ghost-light:hover { background: var(--white); color: var(--ink); border-color: var(--white); }
+
+    /* ---- nav ---- */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: var(--maxw); margin: 0 auto;
+      padding: 18px 32px;
+    }
+    .wordmark {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px; font-weight: 700; letter-spacing: -0.02em;
+      color: var(--ink); text-decoration: none;
+    }
+    .mark {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: var(--orange); color: var(--white);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px;
+    }
+    .nav-links { display: flex; gap: 30px; align-items: center; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-2); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta { font-size: 14px !important; font-weight: 600 !important; padding: 10px 18px; }
+    .nav-toggle-note { display: none; }
+
+    /* ---- hero ---- */
+    .hero { padding: 72px 0 40px; }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.05fr 0.95fr;
+      gap: 56px; align-items: center;
+    }
+    .hero h1 {
+      font-size: clamp(38px, 5.4vw, 62px);
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+    }
+    .hero h1 .hl { color: var(--orange); }
+    .hero-sub {
+      margin-top: 22px; font-size: 18px; line-height: 1.6;
+      color: var(--ink-2); max-width: 520px;
+    }
+    .hero-support {
+      margin-top: 20px; font-size: 15px; color: var(--ink);
+      font-weight: 500; display: flex; flex-wrap: wrap; gap: 8px 16px;
+    }
+    .hero-support span { display: inline-flex; align-items: center; gap: 7px; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex: none; }
+    .hero-ctas { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 14px; }
+
+    /* ---- breadcrumb ---- */
+    .crumb { font-size: 13px; color: var(--ink-2); margin-bottom: 18px; }
+    .crumb a { color: var(--ink-2); text-decoration: none; }
+    .crumb a:hover { color: var(--ink); }
+    .crumb span[aria-current] { color: var(--ink); font-weight: 600; }
+
+    /* ---- sections ---- */
+    section { scroll-margin-top: 76px; }
+    .section { padding: 84px 0; }
+    .section-head { max-width: 640px; }
+    .section-head h2 { font-size: clamp(28px, 3.6vw, 42px); font-weight: 700; color: var(--ink); }
+    .section-head p { margin-top: 18px; font-size: 18px; color: var(--ink-2); }
+
+    /* ---- reality (empathy) ---- */
+    .reality { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .reality h2 { font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; max-width: 780px; }
+    .reality p { margin-top: 20px; font-size: 18px; color: var(--ink-2); max-width: 720px; }
+    .reality .quote {
+      margin-top: 24px; padding: 22px 26px; background: var(--white);
+      border: 1px solid var(--line); border-left: 3px solid var(--orange);
+      border-radius: 10px; font-size: 18px; color: var(--ink);
+      max-width: 760px; font-style: italic;
+    }
+
+    /* ---- solutions / detail rows ---- */
+    .solution {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 56px;
+      align-items: center; padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+    .solution:first-of-type { border-top: none; }
+    .solution.reverse .sol-copy { order: 2; }
+    .solution.reverse .sol-diagram { order: 1; }
+    .sol-tag {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange);
+      margin-bottom: 12px;
+    }
+    .sol-copy h3 { font-size: clamp(24px, 2.8vw, 32px); font-weight: 700; color: var(--ink); }
+    .sol-copy > p { margin-top: 16px; font-size: 17px; color: var(--ink-2); }
+    .checklist { list-style: none; margin-top: 22px; display: grid; gap: 12px; }
+    .checklist li { display: flex; gap: 12px; font-size: 15px; color: var(--ink); align-items: flex-start; }
+    .checklist svg { flex: none; margin-top: 3px; }
+    .control-note {
+      margin-top: 22px; display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(224,86,42,0.08); border: 1px solid rgba(224,86,42,0.28);
+      color: var(--ink); font-size: 14px; font-weight: 500;
+      padding: 10px 14px; border-radius: 10px;
+    }
+    .control-note svg { flex: none; }
+    .learn-more {
+      display: inline-flex; align-items: center; gap: 7px; margin-top: 22px;
+      font-size: 15px; font-weight: 600; color: var(--orange); text-decoration: none;
+    }
+    .learn-more:hover { color: var(--orange-deep); }
+    .learn-more span { transition: transform 0.15s; }
+    .learn-more:hover span { transform: translateX(3px); }
+
+    /* ---- blueprint diagram ---- */
+    .blueprint {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      background-image: radial-gradient(var(--line) 1px, transparent 1px);
+      background-size: 16px 16px;
+      background-position: -1px -1px;
+      box-shadow: 0 1px 2px rgba(16,24,40,0.04), 0 8px 24px rgba(16,24,40,0.05);
+    }
+    .blueprint svg { display: block; width: 100%; height: auto; }
+    .bp-caption {
+      margin-top: 14px; font-size: 13px; color: var(--ink-2);
+      line-height: 1.5; border-top: 1px dashed var(--line); padding-top: 12px;
+    }
+
+    /* SVG diagram text roles */
+    .d-label { font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; fill: var(--ink-2); }
+    .d-box-text { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; fill: #FFFFFF; }
+    .d-box-sub { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; fill: rgba(255,255,255,0.72); }
+    .d-chip-text { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; fill: var(--ink-2); }
+    .d-branch { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .d-branch.match { fill: #12805C; }
+    .d-branch.nomatch { fill: var(--orange-deep); }
+    .d-loop-text { font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; fill: var(--orange-deep); }
+    .human-label { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 700; fill: #FFFFFF; }
+
+    /* human node pulse */
+    .human-pulse { transform-box: fill-box; transform-origin: center; }
+    .in-view .human-pulse { animation: pulse 1.8s ease-out 1; }
+    @keyframes pulse {
+      0% { opacity: 0.55; }
+      35% { opacity: 1; }
+      100% { opacity: 1; }
+    }
+    .pulse-ring { opacity: 0; }
+    .in-view .pulse-ring { animation: ring 1.9s ease-out 1; }
+    @keyframes ring {
+      0% { opacity: 0.5; stroke-width: 2; }
+      70% { opacity: 0; }
+      100% { opacity: 0; }
+    }
+
+    /* scroll reveal */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+
+    /* ---- how it works / assistant-vs-agent ---- */
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+    .split-card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 28px 26px; }
+    .split-card .num {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase;
+    }
+    .split-card h3 { margin-top: 14px; font-size: 20px; font-weight: 700; color: var(--ink); }
+    .split-card p { margin-top: 10px; font-size: 15px; color: var(--ink-2); }
+    .split-card.muted-card .num { color: var(--ink-2); }
+
+    /* ---- watch the loop ---- */
+    .loopwalk { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .loop-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center; }
+    .loop-steps { list-style: none; margin-top: 26px; display: grid; gap: 16px; counter-reset: loop; }
+    .loop-steps li {
+      display: flex; gap: 16px; align-items: flex-start;
+      background: var(--white); border: 1px solid var(--line);
+      border-radius: 12px; padding: 16px 18px;
+    }
+    .loop-steps .lnum {
+      flex: none; width: 30px; height: 30px; border-radius: 8px;
+      background: var(--orange); color: var(--white);
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 14px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .loop-steps li.loop-highlight { border-color: rgba(224,86,42,0.4); background: rgba(224,86,42,0.05); }
+    .loop-steps li.loop-highlight .lnum { background: var(--orange-deep); }
+    .loop-steps strong { font-weight: 600; color: var(--ink); }
+    .loop-steps p { margin-top: 2px; font-size: 14.5px; color: var(--ink-2); }
+
+    /* ---- before / after ---- */
+    .ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 44px; }
+    .ba-card { border: 1px solid var(--line); border-radius: 14px; padding: 30px 28px; }
+    .ba-card.before { background: var(--surface); }
+    .ba-card.after { background: var(--white); border-color: rgba(224,86,42,0.35); box-shadow: 0 8px 24px rgba(16,24,40,0.05); }
+    .ba-card .ba-label {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px;
+    }
+    .ba-card.before .ba-label { color: var(--ink-2); }
+    .ba-card.after .ba-label { color: var(--orange); }
+    .ba-card ul { list-style: none; display: grid; gap: 14px; }
+    .ba-card li { display: flex; gap: 12px; font-size: 15.5px; align-items: flex-start; }
+    .ba-card.before li { color: var(--ink-2); }
+    .ba-card.after li { color: var(--ink); }
+    .ba-card svg { flex: none; margin-top: 3px; }
+
+    /* ---- what you get ---- */
+    .get-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; margin-top: 44px; }
+    .get-grid li { display: flex; gap: 12px; font-size: 16px; color: var(--ink); align-items: flex-start; }
+    .get-grid svg { flex: none; margin-top: 3px; }
+    .get-list { list-style: none; }
+
+    /* ---- built around your business ---- */
+    .built .built-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+    .built-card { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 26px 24px; }
+    .built-card .num {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase;
+    }
+    .built-card h3 { margin-top: 14px; font-size: 19px; font-weight: 700; color: var(--ink); }
+    .built-card p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
+    .extend-note {
+      margin-top: 34px; padding: 20px 24px; background: var(--surface);
+      border: 1px solid var(--line); border-left: 3px solid var(--orange);
+      border-radius: 10px; font-size: 16px; color: var(--ink);
+    }
+    .extend-note strong { font-weight: 600; }
+
+    /* ---- related solutions ---- */
+    .related { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .related-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+    .related-card {
+      display: block; background: var(--white); border: 1px solid var(--line);
+      border-radius: 14px; padding: 28px 26px; text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+    .related-card:hover { border-color: rgba(224,86,42,0.4); box-shadow: 0 8px 24px rgba(16,24,40,0.06); transform: translateY(-2px); }
+    .related-card .num {
+      font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.08em; color: var(--orange); text-transform: uppercase;
+    }
+    .related-card h3 { margin-top: 12px; font-size: 20px; font-weight: 700; color: var(--ink); }
+    .related-card p { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); }
+    .related-card .go { margin-top: 16px; font-size: 15px; font-weight: 600; color: var(--orange); display: inline-flex; gap: 7px; align-items: center; }
+
+    /* ---- how we work ---- */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 44px; }
+    .step { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 30px 26px; position: relative; }
+    .step .step-num {
+      width: 40px; height: 40px; border-radius: 10px; background: var(--orange);
+      color: var(--white); font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+      font-size: 18px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .step h3 { font-size: 20px; font-weight: 700; color: var(--ink); }
+    .step p { margin-top: 10px; font-size: 15px; color: var(--ink-2); }
+    .honest {
+      margin-top: 34px; padding: 20px 24px; background: var(--surface);
+      border: 1px solid var(--line); border-left: 3px solid var(--orange);
+      border-radius: 10px; font-size: 16px; color: var(--ink);
+    }
+    .honest strong { font-weight: 600; }
+
+    /* ---- final cta ---- */
+    .final { text-align: center; }
+    .final .section-head { margin: 0 auto; }
+    .final h2 { font-size: clamp(30px, 4vw, 46px); }
+    .final p { max-width: 560px; margin-left: auto; margin-right: auto; }
+    .final-ctas { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
+    .final-email { font-size: 15px; color: var(--ink-2); }
+    .final-email a { color: var(--orange); font-weight: 600; text-decoration: none; }
+    .final-email a:hover { color: var(--orange-deep); }
+
+    /* ---- footer ---- */
+    footer { border-top: 1px solid var(--line); background: var(--surface); }
+    .footer-inner { padding: 40px 32px; max-width: var(--maxw); margin: 0 auto; }
+    .footer-top { display: flex; flex-wrap: wrap; gap: 18px 28px; align-items: center; justify-content: space-between; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; list-style: none; }
+    .footer-links a { font-size: 14px; color: var(--ink-2); text-decoration: none; }
+    .footer-links a:hover { color: var(--ink); }
+    .footer-copy { margin-top: 22px; font-size: 13px; color: var(--ink-2); }
+
+    /* ---- responsive ---- */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .solution, .solution.reverse { grid-template-columns: 1fr; gap: 32px; }
+      .solution.reverse .sol-copy, .solution.reverse .sol-diagram { order: initial; }
+      .sol-diagram { order: 2; }
+      .sol-copy { order: 1; }
+      .loop-grid { grid-template-columns: 1fr; gap: 40px; }
+      .split { grid-template-columns: 1fr; }
+      .ba-grid { grid-template-columns: 1fr; }
+      .get-grid { grid-template-columns: 1fr; }
+      .built .built-cards { grid-template-columns: 1fr; }
+      .related-cards { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .nav-links li:not(.nav-cta-li) { display: none; }
+    }
+    @media (max-width: 560px) {
+      .wrap, .nav-inner, .footer-inner { padding-left: 20px; padding-right: 20px; }
+      .section { padding: 60px 0; }
+      .hero { padding: 48px 0 20px; }
+      .hero-ctas .btn, .final-ctas .btn { width: 100%; justify-content: center; }
+      .footer-top { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      * { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      .pulse-ring { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/" class="wordmark"><span class="mark">K</span> Kentro AI Labs</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="/#what-we-build">What we build</a></li>
+          <li><a href="/#how-we-work">How it works</a></li>
+          <li><a href="/products/agent-k">Agent K</a></li>
+          <li class="nav-cta-li"><a class="btn btn-primary nav-cta" href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a call</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="crumb"><a href="/">Home</a> / <a href="/#what-we-build">What we build</a> / <span aria-current="page">AI agents</span></p>
+            <p class="eyebrow">AI agents</p>
+            <h1 id="hero-title">An AI teammate that does the <span class="hl">routine work.</span></h1>
+            <p class="hero-sub">It chases your subs for signed lien waivers and current insurance certs, follows up until they respond, validates and files what comes back — and hands you only the exceptions.</p>
+            <div class="hero-support">
+              <span><i class="dot"></i>Built around your business</span>
+              <span><i class="dot"></i>You own it</span>
+              <span><i class="dot"></i>A person always stays in control</span>
+            </div>
+            <div class="hero-ctas">
+              <a class="btn btn-primary" href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call</a>
+              <a class="btn btn-outline" href="#how-it-works">See how it works</a>
+            </div>
+          </div>
+
+          <!-- HERO BLUEPRINT: AI-agents chase-and-collect loop -->
+          <div class="hero-diagram reveal">
+            <div class="blueprint">
+              <svg viewBox="0 0 460 320" role="img" aria-labelledby="heroDiagTitle heroDiagDesc" preserveAspectRatio="xMidYMid meet">
+                <title id="heroDiagTitle">AI agent workflow</title>
+                <desc id="heroDiagDesc">A payment run triggers the agent to check which subcontractors are missing documents, request them, follow up in a loop until they respond, then collect and validate the documents, file them, and flag only the exceptions for a person.</desc>
+                <defs>
+                  <marker id="ah3" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" fill="#E0562A"></path></marker>
+                </defs>
+
+                <!-- trigger -->
+                <rect x="12" y="24" width="110" height="50" rx="10" fill="#101828"></rect>
+                <text x="67" y="46" class="d-box-text" text-anchor="middle">Trigger</text>
+                <text x="67" y="62" class="d-box-sub" text-anchor="middle">payment run</text>
+
+                <path d="M122,49 L156,49" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3)"></path>
+
+                <!-- checks who's missing -->
+                <rect x="158" y="24" width="128" height="50" rx="10" fill="#101828"></rect>
+                <text x="222" y="46" class="d-box-text" text-anchor="middle">Checks who's</text>
+                <text x="222" y="62" class="d-box-text" text-anchor="middle">missing docs</text>
+
+                <path d="M286,49 L320,49" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3)"></path>
+
+                <!-- requests from each sub -->
+                <rect x="322" y="24" width="126" height="50" rx="10" fill="#101828"></rect>
+                <text x="385" y="46" class="d-box-text" text-anchor="middle">Requests from</text>
+                <text x="385" y="62" class="d-box-text" text-anchor="middle">each sub</text>
+
+                <!-- down to collect + validate -->
+                <path d="M385,74 L385,116" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3)"></path>
+
+                <rect x="300" y="118" width="148" height="52" rx="10" fill="#101828"></rect>
+                <text x="374" y="140" class="d-box-text" text-anchor="middle">Collects + validates</text>
+                <text x="374" y="156" class="d-box-sub" text-anchor="middle">waiver · insurance cert</text>
+
+                <!-- LOOP BACK: not valid / no reply -> follows up -> requests -->
+                <path d="M300,144 L222,144 L222,120 C222,100 300,96 322,90 L322,74" fill="none" stroke="#E0562A" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah3)"></path>
+                <text x="222" y="112" class="d-loop-text" text-anchor="middle">follows up until done</text>
+                <text x="250" y="160" class="d-branch nomatch" text-anchor="middle">no reply →</text>
+
+                <!-- valid -> down to file + human -->
+                <path d="M374,170 L374,196" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3)"></path>
+                <text x="392" y="188" class="d-branch match" text-anchor="start">valid</text>
+
+                <!-- files it -->
+                <rect x="300" y="198" width="148" height="46" rx="10" fill="#101828"></rect>
+                <text x="374" y="220" class="d-box-text" text-anchor="middle">Files it +</text>
+                <text x="374" y="235" class="d-box-text" text-anchor="middle">updates your system</text>
+
+                <!-- human node: flags exceptions -->
+                <path d="M300,221 L232,221 L232,246" fill="none" stroke="#E0562A" stroke-width="1.6" marker-end="url(#ah3)"></path>
+                <g class="human-pulse">
+                  <circle class="pulse-ring" cx="120" cy="272" r="34" fill="none" stroke="#E0562A"></circle>
+                  <rect x="40" y="248" width="160" height="48" rx="12" fill="#E0562A"></rect>
+                  <circle cx="64" cy="268" r="6" fill="#FFFFFF"></circle>
+                  <path d="M53,286 a11,9 0 0 1 22,0 Z" fill="#FFFFFF"></path>
+                  <text x="84" y="268" class="human-label">Flags only the</text>
+                  <text x="84" y="284" class="human-label">exceptions for you</text>
+                </g>
+                <path d="M232,272 L202,272" fill="none" stroke="#E0562A" stroke-width="1.6" marker-end="url(#ah3)"></path>
+              </svg>
+              <p class="bp-caption">The chase-and-collect loop runs itself every pay cycle — filing what's clean and handing you only what needs a decision.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== THE PROBLEM ===== -->
+    <section class="reality section" aria-labelledby="problem-title">
+      <div class="wrap reveal">
+        <p class="eyebrow muted">The problem</p>
+        <h2 id="problem-title">Before you can pay a sub, you have to go collect the paperwork.</h2>
+        <p>Before you can pay a subcontractor or bill a client, you need signed lien waivers and current insurance certificates from everyone on the job. Tracking who's missing what, chasing them down, checking the paperwork, and filing it is a whole day of nagging — every single pay cycle.</p>
+        <blockquote class="quote">"Miss one and it holds up a payment or puts us at risk. It's the part of the job nobody wants to do, and it comes back around every time we pay."</blockquote>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section id="how-it-works" class="section" aria-labelledby="how-it-works-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2 id="how-it-works-title">An assistant answers. An agent acts.</h2>
+          <p>An AI agent doesn't just tell you who's missing a document — it runs the whole loop. It checks who's missing a signed lien waiver or a current insurance cert, requests it from each sub, follows up until they respond, validates what comes back, files it, updates your system, and hands you only the exceptions.</p>
+        </div>
+        <div class="split">
+          <div class="split-card muted-card reveal">
+            <p class="num">An assistant answers</p>
+            <h3>It tells you what it knows.</h3>
+            <p>Ask "who's missing a waiver?" and it gives you the list. Useful — but you still have to send the requests, follow up, check the replies, and file everything yourself.</p>
+          </div>
+          <div class="split-card reveal">
+            <p class="num">An agent acts</p>
+            <h3>It does the work for you.</h3>
+            <p>It sends the requests, follows up until each sub responds, validates what comes back, files what's clean, updates your system — and flags only the exceptions. Think of it as an AI teammate, not a chatbot.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WATCH THE LOOP ===== -->
+    <section class="loopwalk section" aria-labelledby="loop-title">
+      <div class="wrap">
+        <div class="loop-grid">
+          <div class="reveal">
+            <p class="eyebrow">Watch the loop</p>
+            <h2 id="loop-title">The part a person hates doing — it just keeps doing.</h2>
+            <p style="margin-top:18px;font-size:18px;color:var(--ink-2);">Most of the effort in this job isn't the first request. It's the following up: the second email, the text three days later, the call the week after. The dashed loop-back arrow in the diagram is that persistence — the agent keeps chasing each sub until the document is in.</p>
+            <ol class="loop-steps">
+              <li>
+                <span class="lnum">1</span>
+                <div><strong>It checks who's missing.</strong><p>A payment run triggers it. It looks across your subs and flags anyone without a signed waiver or a current cert.</p></div>
+              </li>
+              <li>
+                <span class="lnum">2</span>
+                <div><strong>It requests from each sub.</strong><p>It sends each one exactly what it needs — the right document, for the right job.</p></div>
+              </li>
+              <li class="loop-highlight">
+                <span class="lnum">3</span>
+                <div><strong>It follows up until done.</strong><p>No reply, or the document isn't valid? It loops back and asks again — and again — until the paperwork comes in. This is the loop-back arrow, and it's the part you never have to touch.</p></div>
+              </li>
+              <li>
+                <span class="lnum">4</span>
+                <div><strong>It files what's clean, flags the rest.</strong><p>Valid documents get validated, filed, and logged in your system. Only real exceptions come to you.</p></div>
+              </li>
+            </ol>
+          </div>
+          <div class="reveal">
+            <div class="blueprint">
+              <svg viewBox="0 0 460 320" role="img" aria-labelledby="loopDiagTitle loopDiagDesc" preserveAspectRatio="xMidYMid meet">
+                <title id="loopDiagTitle">The follow-up loop</title>
+                <desc id="loopDiagDesc">The agent requests a document from each sub, collects and validates it, and if there is no reply or the document is not valid it follows up and loops back to the request — repeating until the document is in — then files valid ones and flags only exceptions for a person.</desc>
+                <defs>
+                  <marker id="ah3b" markerWidth="9" markerHeight="9" refX="7" refY="3.2" orient="auto"><path d="M0,0 L7,3.2 L0,6.4 Z" fill="#E0562A"></path></marker>
+                </defs>
+
+                <!-- trigger -->
+                <rect x="12" y="24" width="110" height="50" rx="10" fill="#101828"></rect>
+                <text x="67" y="46" class="d-box-text" text-anchor="middle">Trigger</text>
+                <text x="67" y="62" class="d-box-sub" text-anchor="middle">payment run</text>
+
+                <path d="M122,49 L156,49" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3b)"></path>
+
+                <!-- checks who's missing -->
+                <rect x="158" y="24" width="128" height="50" rx="10" fill="#101828"></rect>
+                <text x="222" y="46" class="d-box-text" text-anchor="middle">Checks who's</text>
+                <text x="222" y="62" class="d-box-text" text-anchor="middle">missing docs</text>
+
+                <path d="M286,49 L320,49" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3b)"></path>
+
+                <!-- requests from each sub -->
+                <rect x="322" y="24" width="126" height="50" rx="10" fill="#101828"></rect>
+                <text x="385" y="46" class="d-box-text" text-anchor="middle">Requests from</text>
+                <text x="385" y="62" class="d-box-text" text-anchor="middle">each sub</text>
+
+                <!-- down to collect + validate -->
+                <path d="M385,74 L385,116" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3b)"></path>
+
+                <rect x="300" y="118" width="148" height="52" rx="10" fill="#101828"></rect>
+                <text x="374" y="140" class="d-box-text" text-anchor="middle">Collects + validates</text>
+                <text x="374" y="156" class="d-box-sub" text-anchor="middle">waiver · insurance cert</text>
+
+                <!-- LOOP BACK: not valid / no reply -> follows up -> requests -->
+                <path d="M300,144 L222,144 L222,120 C222,100 300,96 322,90 L322,74" fill="none" stroke="#E0562A" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#ah3b)"></path>
+                <text x="222" y="112" class="d-loop-text" text-anchor="middle">follows up until done</text>
+                <text x="250" y="160" class="d-branch nomatch" text-anchor="middle">no reply →</text>
+
+                <!-- valid -> down to file + human -->
+                <path d="M374,170 L374,196" fill="none" stroke="#E0562A" stroke-width="1.8" marker-end="url(#ah3b)"></path>
+                <text x="392" y="188" class="d-branch match" text-anchor="start">valid</text>
+
+                <!-- files it -->
+                <rect x="300" y="198" width="148" height="46" rx="10" fill="#101828"></rect>
+                <text x="374" y="220" class="d-box-text" text-anchor="middle">Files it +</text>
+                <text x="374" y="235" class="d-box-text" text-anchor="middle">updates your system</text>
+
+                <!-- human node: flags exceptions -->
+                <path d="M300,221 L232,221 L232,246" fill="none" stroke="#E0562A" stroke-width="1.6" marker-end="url(#ah3b)"></path>
+                <g class="human-pulse">
+                  <circle class="pulse-ring" cx="120" cy="272" r="34" fill="none" stroke="#E0562A"></circle>
+                  <rect x="40" y="248" width="160" height="48" rx="12" fill="#E0562A"></rect>
+                  <circle cx="64" cy="268" r="6" fill="#FFFFFF"></circle>
+                  <path d="M53,286 a11,9 0 0 1 22,0 Z" fill="#FFFFFF"></path>
+                  <text x="84" y="268" class="human-label">Flags only the</text>
+                  <text x="84" y="284" class="human-label">exceptions for you</text>
+                </g>
+                <path d="M232,272 L202,272" fill="none" stroke="#E0562A" stroke-width="1.6" marker-end="url(#ah3b)"></path>
+              </svg>
+              <p class="bp-caption">The dashed loop-back arrow is the follow-up — the agent keeps chasing until the document is in, then routes valid ones to filing and everything else to you.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BEFORE AND AFTER ===== -->
+    <section class="section" aria-labelledby="ba-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Before and after</p>
+          <h2 id="ba-title">A recurring chore, turned into a background process.</h2>
+        </div>
+        <div class="ba-grid">
+          <div class="ba-card before reveal">
+            <p class="ba-label">Before</p>
+            <ul>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M5 5 L13 13 M13 5 L5 13" fill="none" stroke="#98A2B3" stroke-width="2" stroke-linecap="round"/></svg>A full day of manual chasing every pay cycle.</li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M5 5 L13 13 M13 5 L5 13" fill="none" stroke="#98A2B3" stroke-width="2" stroke-linecap="round"/></svg>Missed documents that surface at the worst time.</li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M5 5 L13 13 M13 5 L5 13" fill="none" stroke="#98A2B3" stroke-width="2" stroke-linecap="round"/></svg>Delayed payments and compliance exposure.</li>
+            </ul>
+          </div>
+          <div class="ba-card after reveal">
+            <p class="ba-label">After</p>
+            <ul>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>The loop runs itself in the background.</li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Documents get collected, validated, and filed.</li>
+              <li><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You handle only the exceptions that need a person.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== WHAT YOU GET ===== -->
+    <section class="reality section" aria-labelledby="get-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow muted">What you get</p>
+          <h2 id="get-title">The chase, off your plate.</h2>
+        </div>
+        <ul class="get-list get-grid reveal">
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Chases and collects lien waivers and insurance certs from every sub.</li>
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Follows up automatically until each one responds.</li>
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Validates what comes back and files it where it belongs.</li>
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updates your system so records stay current.</li>
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Flags only the exceptions that actually need you.</li>
+          <li><svg width="20" height="20" viewBox="0 0 18 18" aria-hidden="true"><path d="M4 9.5 L7.5 13 L14 5" fill="none" stroke="#E0562A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You stay in control — nothing important happens without you.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== BUILT AROUND YOUR BUSINESS ===== -->
+    <section class="built section" aria-labelledby="built-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">Built around your business</p>
+          <h2 id="built-title">Your subs, your documents, your schedule.</h2>
+          <p>This isn't a generic reminder tool. We build the agent around how your business actually runs — so it asks the right subs for the right documents at the right time.</p>
+        </div>
+        <div class="built-cards">
+          <div class="built-card reveal">
+            <p class="num">Your subs</p>
+            <h3>The people you actually work with.</h3>
+            <p>It knows your subcontractor list and reaches each one the way you already reach them.</p>
+          </div>
+          <div class="built-card reveal">
+            <p class="num">Your documents</p>
+            <h3>The paperwork you actually require.</h3>
+            <p>Built around your document requirements — the specific waivers and certs your jobs and clients need.</p>
+          </div>
+          <div class="built-card reveal">
+            <p class="num">Your schedule</p>
+            <h3>The rhythm you actually run on.</h3>
+            <p>Tied to your payment schedule, so the loop kicks off exactly when a pay cycle comes around.</p>
+          </div>
+        </div>
+        <p class="extend-note reveal"><strong>The same pattern extends further.</strong> A chase-and-collect agent is just one shape. The same approach runs quote follow-ups, subcontractor onboarding, and scheduling and dispatch for field-services businesses — any recurring loop where someone has to keep following up until it's done.</p>
+      </div>
+    </section>
+
+    <!-- ===== RELATED SOLUTIONS ===== -->
+    <section class="related section" aria-labelledby="related-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow muted">Related solutions</p>
+          <h2 id="related-title">Explore what else we build.</h2>
+        </div>
+        <div class="related-cards">
+          <a class="related-card reveal" href="/solutions/document-processing/">
+            <p class="num">Document processing</p>
+            <h3>Paperwork, handled.</h3>
+            <p>Invoices read, checked against your POs and job budgets, and posted to QuickBooks — with your admin approving only the exceptions.</p>
+            <span class="go">See document processing <span aria-hidden="true">→</span></span>
+          </a>
+          <a class="related-card reveal" href="/solutions/ai-assistants/">
+            <p class="num">AI assistants</p>
+            <h3>An assistant that knows your business.</h3>
+            <p>Instant, sourced answers to "what's the spec" and "what's the status" — drawn from your own jobs, not the internet.</p>
+            <span class="go">See AI assistants <span aria-hidden="true">→</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HOW WE WORK ===== -->
+    <section id="how-we-work" class="section" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="eyebrow">How we work</p>
+          <h2 id="how-title">A clear path, a fixed price, no surprises.</h2>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-num">1</div>
+            <h3>Discovery call</h3>
+            <p>Free. We learn your business and tell you honestly where an agent would help, and where it wouldn't.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">2</div>
+            <h3>Build</h3>
+            <p>A fixed scope and a fixed price, agreed in writing before we start. You own everything we build.</p>
+          </div>
+          <div class="step reveal">
+            <div class="step-num">3</div>
+            <h3>Run it with you</h3>
+            <p>We keep it working and improve it as your subs, documents, and schedule change.</p>
+          </div>
+        </div>
+        <p class="honest reveal"><strong>Honest promise:</strong> if an agent isn't worth it for your business yet, we'll tell you on the first call.</p>
+      </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final section" aria-labelledby="final-title">
+      <div class="wrap reveal">
+        <div class="section-head">
+          <p class="eyebrow">Get started</p>
+          <h2 id="final-title">Take the chasing off your plate.</h2>
+          <p>Book a free discovery call. No jargon, no obligation — just an honest read on what's worth building.</p>
+        </div>
+        <div class="final-ctas">
+          <a class="btn btn-primary" href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call</a>
+          <span class="final-email">Prefer email? <a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">hello@kentrolabs.ai</a></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <a href="/" class="wordmark"><span class="mark">K</span> Kentro AI Labs</a>
+        <ul class="footer-links">
+          <li><a href="/products/agent-k">Agent K</a></li>
+          <li><a href="/kentro/privacy">Privacy</a></li>
+          <li><a href="/kentro/terms">Terms</a></li>
+          <li><a href="/kentro/support">Support</a></li>
+          <li><a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">hello@kentrolabs.ai</a></li>
+        </ul>
+      </div>
+      <p class="footer-copy">© 2026 Kentro AI Labs Inc</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in-view'); });
+        document.querySelectorAll('.blueprint').forEach(function (el) { el.classList.add('in-view'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            var bp = e.target.querySelector ? e.target.querySelector('.blueprint') : null;
+            if (bp) bp.classList.add('in-view');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+      els.forEach(function (el) { io.observe(el); });
+      function revealScrolled() {
+        document.querySelectorAll('.reveal:not(.in-view)').forEach(function (el) {
+          if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+            el.classList.add('in-view');
+            var bp = el.querySelector('.blueprint'); if (bp) bp.classList.add('in-view');
+          }
+        });
+      }
+      window.addEventListener('scroll', revealScrolled, { passive: true });
+      window.addEventListener('resize', revealScrolled);
+      revealScrolled();
+    })();
+  </script>
+</body>
+</html>
