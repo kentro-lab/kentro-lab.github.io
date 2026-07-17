@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kentro AI Labs — Working memo: what we build, how we engage, and what it costs to find out</title>
+  <meta name="description" content="A working memo from Kentro AI Labs on what we build, how we engage, and what it costs to find out — production AI for prospective clients. Read it, then book a discovery call.">
+  <link rel="canonical" href="https://kentrolabs.ai/">
+  <meta property="og:title" content="Kentro AI Labs — Working memo">
+  <meta property="og:description" content="What we build, how we engage, and what it costs to find out. A typeset working memo from an AI-engineering firm, prepared for prospective clients.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kentrolabs.ai/">
+  <meta property="og:site_name" content="Kentro AI Labs">
+  <meta name="theme-color" content="#FCFBF8">
+  <!-- Inline SVG data-URI favicon: oxblood monogram rule on off-white paper -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='4'%20fill='%23FCFBF8'/%3E%3Crect%20x='6'%20y='6'%20width='20'%20height='20'%20fill='none'%20stroke='%231A1714'%20stroke-width='1'/%3E%3Cpath%20d='M11%2011v10M11%2016l6-5M11%2016l6%205'%20stroke='%237A2430'%20stroke-width='1.6'%20fill='none'%20stroke-linecap='square'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400;1,7..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root {
+      --paper: #FCFBF8;
+      --ink: #1A1714;          /* near-black, warm */
+      --ink-2: #423C36;        /* secondary prose */
+      --ink-3: #6B655D;        /* sidenotes, gray */
+      --ink-4: #8C8479;        /* furniture, faint */
+      --rule: #DCD7CE;         /* hairline */
+      --rule-2: #C7C1B6;       /* slightly stronger hairline */
+      --oxblood: #7A2430;      /* the one accent */
+      --oxblood-tint: #F1E6E4; /* barely-there wash for note keying */
+      --measure: 65ch;
+      --side-w: 15rem;         /* sidenote column width on desktop */
+      --gap: 2.75rem;          /* gap between column and sidenotes */
+    }
+
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+    }
+
+    html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5.5rem; }
+
+    body {
+      margin: 0;
+      font-family: 'Literata', Georgia, 'Times New Roman', serif;
+      font-optical-sizing: auto;
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 18px;
+      line-height: 1.72;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "liga" 1, "onum" 1, "kern" 1;
+    }
+
+    /* ---------- furniture / mono ---------- */
+    .mono {
+      font-family: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .label {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      font-weight: 500;
+    }
+
+    a { color: var(--oxblood); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
+
+    :focus-visible {
+      outline: 2px solid var(--oxblood);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    strong, b { font-weight: 600; color: var(--ink); }
+    em { font-style: italic; }
+
+    /* hanging quotation / small caps helper */
+    .sc { font-variant-caps: small-caps; letter-spacing: 0.03em; }
+
+    .skip {
+      position: absolute; left: -9999px; top: 0;
+      background: var(--ink); color: var(--paper);
+      padding: 0.6rem 1rem; z-index: 200;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.8rem;
+    }
+    .skip:focus { left: 1rem; top: 1rem; }
+
+    /* ============ page frame ============ */
+    /* The document lives in a grid: a slim sticky ToC rail, the reading
+       column (~65ch), and a right margin that holds sidenotes on desktop. */
+    .sheet {
+      max-width: 78rem;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 12.5rem minmax(0, 1fr);
+      column-gap: clamp(2rem, 4vw, 4rem);
+      align-items: start;
+    }
+
+    /* ---------- sticky ToC rail (desktop) ---------- */
+    .toc {
+      position: sticky;
+      top: 2.5rem;
+      align-self: start;
+      max-height: calc(100vh - 5rem);
+      overflow-y: auto;
+      padding-right: 0.5rem;
+    }
+    .toc-inner {
+      border-top: 1px solid var(--ink);
+      padding-top: 0.9rem;
+    }
+    .toc .toc-kicker { display: block; margin-bottom: 0.9rem; }
+    .toc ol { list-style: none; margin: 0; padding: 0; }
+    .toc li { margin: 0; }
+    .toc a {
+      display: grid;
+      grid-template-columns: 1.6rem 1fr;
+      gap: 0.4rem;
+      align-items: baseline;
+      color: var(--ink-3);
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.74rem;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+      padding: 0.32rem 0;
+      border-left: 2px solid transparent;
+      padding-left: 0.7rem;
+      margin-left: -0.7rem;
+      transition: color 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
+    }
+    .toc a .n { color: var(--ink-4); }
+    .toc a:hover { color: var(--ink); text-decoration: none; }
+    .toc a[aria-current="true"] {
+      color: var(--ink);
+      border-left-color: var(--oxblood);
+    }
+    .toc a[aria-current="true"] .n { color: var(--oxblood); }
+    .toc-foot {
+      margin-top: 1.1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid var(--rule);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--ink-4);
+      line-height: 1.5;
+    }
+    .toc-foot a { color: var(--ink-3); }
+
+    /* mobile ToC (collapsible) — hidden on desktop */
+    .toc-mobile { display: none; }
+
+    /* ---------- the article ---------- */
+    .doc {
+      min-width: 0;
+      padding-bottom: 4rem;
+    }
+
+    /* Each section is itself a two-column grid: reading measure + sidenote margin. */
+    .memo-block {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) var(--side-w);
+      column-gap: var(--gap);
+      align-items: start;
+    }
+    .col { min-width: 0; max-width: var(--measure); }
+    .col p { margin: 0 0 1.15rem; }
+    .col p:last-child { margin-bottom: 0; }
+
+    /* ============ memo header block ============ */
+    header.memo-head {
+      padding: clamp(2.5rem, 6vw, 4.5rem) 0 2.25rem;
+    }
+    .memo-head .rule-top {
+      border: 0; border-top: 2px solid var(--ink);
+      margin: 0 0 1.4rem;
+    }
+    .memo-head .org {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 500;
+      margin: 0 0 1.6rem;
+    }
+    .memo-head .org .doctype { color: var(--oxblood); }
+    .memo-head h1 {
+      font-family: 'Literata', serif;
+      font-optical-sizing: auto;
+      font-weight: 600;
+      font-size: clamp(1.55rem, 3.4vw, 2.4rem);
+      line-height: 1.2;
+      letter-spacing: -0.012em;
+      margin: 0;
+      max-width: 24ch;
+    }
+    .memo-head h1 .subj-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      font-weight: 500;
+      margin-bottom: 0.6rem;
+    }
+    /* metadata: hanging document furniture, two columns of key/value */
+    .memo-meta {
+      margin: 2rem 0 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.55rem 2.5rem;
+      max-width: 44rem;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 1.1rem 0;
+    }
+    .memo-meta div {
+      display: grid;
+      grid-template-columns: 8.5rem 1fr;
+      gap: 0.75rem;
+      align-items: baseline;
+    }
+    .memo-meta dt {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .memo-meta dd {
+      margin: 0;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+    }
+    .memo-meta dd a { color: var(--oxblood); }
+    .memo-head .abstract {
+      margin: 1.9rem 0 0;
+      max-width: var(--measure);
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: var(--ink-2);
+    }
+    .memo-head .abstract .lede-first::first-letter {
+      /* subtle drop of weight, not a decorative dropcap band */
+      font-weight: 500;
+    }
+
+    /* ============ sections ============ */
+    section.memo-sec {
+      padding-top: clamp(2.4rem, 5vw, 3.4rem);
+      margin-top: clamp(2.4rem, 5vw, 3.4rem);
+      border-top: 1px solid var(--rule);
+    }
+    section.memo-sec:first-of-type { border-top: 2px solid var(--ink); }
+
+    .sec-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--oxblood);
+      display: block;
+      margin-bottom: 0.55rem;
+    }
+    h2.sec-title {
+      font-family: 'Literata', serif;
+      font-weight: 600;
+      font-optical-sizing: auto;
+      font-size: clamp(1.35rem, 2.6vw, 1.7rem);
+      line-height: 1.24;
+      letter-spacing: -0.01em;
+      margin: 0 0 1.4rem;
+      max-width: 26ch;
+    }
+    h3.sub {
+      font-family: 'Literata', serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+      margin: 2rem 0 0.75rem;
+      color: var(--ink);
+    }
+    .col > p + h3.sub { margin-top: 2.1rem; }
+
+    /* numbered clauses (method commitments) */
+    ol.clauses {
+      list-style: none;
+      counter-reset: clause;
+      margin: 1.4rem 0 0;
+      padding: 0;
+    }
+    ol.clauses > li {
+      counter-increment: clause;
+      position: relative;
+      padding: 1.1rem 0 1.1rem 3rem;
+      border-top: 1px solid var(--rule);
+    }
+    ol.clauses > li:first-child { border-top: 1px solid var(--rule-2); }
+    ol.clauses > li::before {
+      content: counter(clause, decimal-leading-zero);
+      position: absolute;
+      left: 0; top: 1.15rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--oxblood);
+      letter-spacing: 0.02em;
+    }
+    ol.clauses .clause-h {
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    ol.clauses p { margin: 0; color: var(--ink-2); font-size: 0.98rem; }
+
+    /* ruled definition list for engagements */
+    dl.engagements {
+      margin: 1.5rem 0 0;
+      border-top: 1px solid var(--rule-2);
+    }
+    dl.engagements > .eng {
+      padding: 1.35rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    dl.engagements .eng-top {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.55rem;
+    }
+    dl.engagements dt {
+      font-family: 'Literata', serif;
+      font-weight: 600;
+      font-size: 1.12rem;
+      color: var(--ink);
+      margin: 0;
+    }
+    dl.engagements .eng-shape {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--oxblood);
+    }
+    dl.engagements dd { margin: 0; }
+    dl.engagements dd p { margin: 0 0 0.7rem; color: var(--ink-2); font-size: 0.98rem; }
+    dl.engagements .deliver {
+      margin: 0.6rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    dl.engagements .deliver li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--ink-2);
+      line-height: 1.55;
+      margin-bottom: 0.35rem;
+    }
+    dl.engagements .deliver li::before {
+      content: "—";
+      position: absolute; left: 0;
+      color: var(--oxblood);
+    }
+    .eng-note {
+      margin-top: 0.5rem;
+      font-size: 0.92rem;
+      color: var(--ink-3);
+      font-style: italic;
+    }
+
+    /* pull-clause / disqualification criteria */
+    ul.criteria {
+      list-style: none;
+      margin: 1.3rem 0 0;
+      padding: 0;
+    }
+    ul.criteria li {
+      position: relative;
+      padding: 0.55rem 0 0.55rem 1.5rem;
+      color: var(--ink-2);
+      font-size: 0.98rem;
+    }
+    ul.criteria li::before {
+      content: "§";
+      position: absolute; left: 0; top: 0.55rem;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--oxblood);
+      font-size: 0.85rem;
+    }
+    ul.criteria li strong { color: var(--ink); }
+
+    /* inline reach / signature */
+    .reach {
+      margin-top: 1.5rem;
+      padding: 1.2rem 0 0;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.4rem 1.5rem;
+    }
+    .reach .book {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+    .reach .direct {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--ink-3);
+    }
+    .signature {
+      margin-top: 1.8rem;
+      font-style: italic;
+      color: var(--ink);
+      font-size: 1.02rem;
+    }
+
+    /* ============ sidenotes ============ */
+    /* Desktop: superscript marker in the text; the note itself renders in the
+       right sidenote column, aligned to (roughly) its reference. On narrow
+       screens the same <label>+<input>/<aside> collapses to an inline
+       expandable footnote via the native details fallback. */
+
+    /* the superscript marker in running text */
+    .sn-ref {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62em;
+      font-weight: 500;
+      color: var(--oxblood);
+      vertical-align: super;
+      line-height: 0;
+      cursor: default;
+      padding: 0 0.05em;
+    }
+
+    /* The <aside> is a real sidenote in the right column on desktop */
+    aside.sidenote {
+      font-size: 0.82rem;
+      line-height: 1.55;
+      color: var(--ink-3);
+      margin: 0 0 1.5rem;
+    }
+    aside.sidenote .sn-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--oxblood);
+      margin-right: 0.4em;
+      font-weight: 500;
+    }
+    aside.sidenote strong { color: var(--ink-2); font-weight: 600; }
+    aside.sidenote code, aside.sidenote .kbd {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.92em;
+      color: var(--ink-2);
+      background: var(--oxblood-tint);
+      padding: 0.02em 0.28em;
+      border-radius: 2px;
+    }
+    aside.sidenote .sn-label {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+      margin-bottom: 0.35rem;
+    }
+
+    /* On desktop the sidenotes live in the .sidenotes column of each block.
+       We stack them; the visual "alignment to reference" comes from placing
+       each block's notes beside that block's prose. */
+    .sidenotes { min-width: 0; }
+    .sidenotes .sn-toggle { display: none; }  /* the details apparatus is mobile-only */
+
+    /* ============ appendix / readiness module ============ */
+    .appendix-lead { max-width: var(--measure); }
+
+    .check {
+      margin-top: 1.8rem;
+      max-width: 40rem;
+      border: 1px solid var(--rule-2);
+      background: #FFFEFB;
+    }
+    .check-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .check-head .ttl {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .check-head .ct {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--ink-4);
+      letter-spacing: 0.05em;
+    }
+    .check-body { padding: 1.1rem; }
+
+    /* stepper */
+    .q-meta {
+      display: flex; align-items: baseline; gap: 0.8rem;
+      margin-bottom: 0.7rem;
+    }
+    .q-index {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.06em;
+      color: var(--oxblood);
+    }
+    .q-lens {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem; letter-spacing: 0.11em;
+      text-transform: uppercase; color: var(--ink-4);
+    }
+    .q-text {
+      font-size: 1.02rem; line-height: 1.5;
+      margin: 0 0 1rem; color: var(--ink);
+    }
+    .q-answers { display: flex; gap: 0.7rem; }
+    .ans {
+      flex: 1;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem; letter-spacing: 0.05em;
+      text-transform: uppercase; font-weight: 500;
+      color: var(--ink-2);
+      background: var(--paper);
+      border: 1px solid var(--rule-2);
+      border-radius: 2px;
+      padding: 0.75rem 0.7rem;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .ans:hover { border-color: var(--oxblood); color: var(--ink); }
+    .ans[aria-pressed="true"] {
+      border-color: var(--oxblood);
+      background: var(--oxblood-tint);
+      color: var(--oxblood);
+    }
+    .q-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.8rem; margin-top: 1rem; padding-top: 0.85rem;
+      border-top: 1px solid var(--rule);
+    }
+    .q-back {
+      background: none; border: none;
+      color: var(--ink-3);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.04em;
+      cursor: pointer; padding: 0.3rem 0.1rem;
+    }
+    .q-back:hover { color: var(--ink); }
+    .q-back[disabled] { opacity: 0.4; cursor: default; }
+    .q-hint {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem; color: var(--ink-4); letter-spacing: 0.03em;
+    }
+
+    .meter { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1rem; }
+    .meter-track { flex: 1; height: 3px; background: var(--rule); overflow: hidden; }
+    .meter-fill { height: 100%; width: 0%; background: var(--oxblood); transition: width 0.25s ease; }
+    @media (prefers-reduced-motion: reduce) { .meter-fill { transition: none; } }
+    .meter-count { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--ink-3); white-space: nowrap; }
+
+    /* result */
+    .result[hidden] { display: none; }
+    .result-head { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.5rem; }
+    .result-score {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.5rem; font-weight: 500; color: var(--ink);
+    }
+    .result-score small { color: var(--ink-4); font-size: 0.9rem; }
+    .result-tierline .label { display: block; margin-bottom: 0.15rem; }
+    .result-tier { font-size: 1.15rem; font-weight: 600; color: var(--oxblood); font-family: 'Literata', serif; }
+    .result-summary { margin: 0.9rem 0; font-size: 0.98rem; color: var(--ink-2); line-height: 1.6; }
+    .fixfirst {
+      margin-top: 1rem; border-top: 1px solid var(--rule-2);
+    }
+    .fixfirst-head {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--oxblood); padding: 0.8rem 0 0.5rem;
+    }
+    .fixfirst-list { margin: 0; padding: 0; list-style: none; }
+    .fixfirst-list li { padding: 0.6rem 0; border-top: 1px solid var(--rule); }
+    .fixfirst-list li:first-child { border-top: none; }
+    .ff-lens {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--oxblood); display: block; margin-bottom: 0.2rem;
+    }
+    .ff-text { font-size: 0.9rem; color: var(--ink-2); line-height: 1.5; }
+    .result-actions { margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: 0.7rem 1.2rem; align-items: baseline; }
+    .result-actions .book { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+    .restart {
+      background: none; border: none; cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.78rem;
+      color: var(--ink-3); padding: 0; text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .restart:hover { color: var(--ink); }
+    .result-note { margin-top: 0.9rem; font-size: 0.8rem; color: var(--ink-4); line-height: 1.55; }
+    .check-foot { margin-top: 0.85rem; font-size: 0.82rem; color: var(--ink-3); line-height: 1.55; max-width: 40rem; }
+
+    /* no-JS fallback: the eight lenses listed in text */
+    .js-only { display: none; }
+    .no-js-fallback { display: block; }
+    html.has-js .js-only { display: block; }
+    html.has-js .no-js-fallback { display: none; }
+    ol.lens-list { margin: 1.2rem 0 0; padding: 0 0 0 0; list-style: none; counter-reset: lens; border-top: 1px solid var(--rule-2); }
+    ol.lens-list li {
+      counter-increment: lens;
+      position: relative;
+      padding: 0.85rem 0 0.85rem 2.6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    ol.lens-list li::before {
+      content: counter(lens, decimal-leading-zero);
+      position: absolute; left: 0; top: 0.85rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.72rem; color: var(--oxblood);
+    }
+    ol.lens-list .ll-lens {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem;
+      letter-spacing: 0.11em; text-transform: uppercase; color: var(--ink-4);
+      display: block; margin-bottom: 0.25rem;
+    }
+    ol.lens-list .ll-q { color: var(--ink-2); font-size: 0.96rem; line-height: 1.5; }
+
+    /* glossary */
+    dl.glossary {
+      margin: 1.4rem 0 0;
+      border-top: 1px solid var(--rule-2);
+    }
+    dl.glossary > div {
+      display: grid;
+      grid-template-columns: 11rem 1fr;
+      gap: 0.5rem 1.5rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: baseline;
+    }
+    dl.glossary dt {
+      font-weight: 600; color: var(--ink);
+      font-size: 0.98rem;
+    }
+    dl.glossary dt .term-mono {
+      display: block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-4); font-weight: 400; margin-top: 0.2rem;
+    }
+    dl.glossary dd { margin: 0; color: var(--ink-2); font-size: 0.96rem; line-height: 1.55; }
+    @media (max-width: 34rem) {
+      dl.glossary > div { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    /* ============ document footer + site footer ============ */
+    .doc-footer {
+      margin-top: clamp(2.6rem, 5vw, 3.6rem);
+      padding-top: 1.3rem;
+      border-top: 2px solid var(--ink);
+    }
+    .revision {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+      line-height: 1.7;
+    }
+    .revision .rev-line { display: block; }
+    .revision .rev-line + .rev-line { margin-top: 0.15rem; }
+
+    footer.site {
+      margin-top: 2.2rem;
+      padding: 2rem 0 3rem;
+      border-top: 1px solid var(--rule);
+    }
+    .site-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 1.4rem;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .site-brand {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--ink-2);
+    }
+    .site-links {
+      display: flex; flex-wrap: wrap;
+      gap: 0.5rem 1.1rem;
+      align-items: baseline;
+    }
+    .site-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.03em;
+      color: var(--ink-3);
+    }
+    .site-links a:hover { color: var(--oxblood); }
+    .site-links .sep { color: var(--rule-2); }
+    .site-legal {
+      margin-top: 1.1rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--ink-4);
+      letter-spacing: 0.02em;
+      line-height: 1.7;
+    }
+
+    /* ============ responsive: collapse sidenotes and ToC ============ */
+    /* Below the breakpoint the sidenote margin disappears; each note becomes an
+       inline <details> footnote right after its paragraph, and the ToC becomes
+       a collapsible strip at the top. */
+    @media (max-width: 60rem) {
+      .doc-grid { grid-template-columns: 1fr; }
+      .toc { display: none; }        /* desktop rail off */
+      .toc-mobile { display: block; }
+
+      .memo-block { grid-template-columns: 1fr; }
+      .col { max-width: var(--measure); }
+      /* Hide the desktop sidenote column; the inline details take over. */
+      .sidenotes { display: none; }
+
+      /* inline footnote apparatus */
+      .sn-inline { display: block; margin: -0.4rem 0 1.15rem; }
+      details.sn-inline {
+        border-left: 2px solid var(--oxblood);
+        padding-left: 0.85rem;
+      }
+      details.sn-inline > summary {
+        list-style: none;
+        cursor: pointer;
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.04em;
+        color: var(--oxblood);
+        padding: 0.15rem 0;
+      }
+      details.sn-inline > summary::-webkit-details-marker { display: none; }
+      details.sn-inline > summary::marker { content: ""; }
+      details.sn-inline > summary::after {
+        content: " — note";
+        color: var(--ink-4);
+      }
+      details.sn-inline[open] > summary::after { content: " — hide note"; }
+      details.sn-inline .sn-inline-body {
+        font-size: 0.86rem;
+        line-height: 1.55;
+        color: var(--ink-3);
+        padding: 0.4rem 0 0.5rem;
+      }
+      details.sn-inline .sn-inline-body strong { color: var(--ink-2); }
+      details.sn-inline .sn-inline-body code {
+        font-family: 'IBM Plex Mono', monospace;
+        font-size: 0.92em; color: var(--ink-2);
+        background: var(--oxblood-tint); padding: 0.02em 0.28em; border-radius: 2px;
+      }
+    }
+    /* On desktop, the inline details are not needed — hide them entirely. */
+    @media (min-width: 60.01rem) {
+      .sn-inline { display: none; }
+    }
+
+    /* mobile ToC as a details strip */
+    .toc-mobile details {
+      border: 1px solid var(--rule-2);
+      background: #FFFEFB;
+    }
+    .toc-mobile summary {
+      list-style: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 0.9rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-2);
+    }
+    .toc-mobile summary::-webkit-details-marker { display: none; }
+    .toc-mobile summary::after { content: "＋"; color: var(--oxblood); font-size: 0.9rem; }
+    .toc-mobile details[open] summary::after { content: "－"; }
+    .toc-mobile ol { list-style: none; margin: 0; padding: 0.3rem 0 0.6rem; border-top: 1px solid var(--rule); }
+    .toc-mobile ol a {
+      display: block;
+      padding: 0.45rem 0.9rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      color: var(--ink-3);
+      text-decoration: none;
+    }
+    .toc-mobile ol a:hover { color: var(--ink); }
+    .toc-mobile ol .n { color: var(--ink-4); margin-right: 0.5rem; }
+
+    @media (max-width: 34rem) {
+      body { font-size: 17px; }
+      .memo-meta { grid-template-columns: 1fr; }
+      .memo-meta div { grid-template-columns: 7rem 1fr; }
+      .result-actions { flex-direction: column; align-items: stretch; }
+      dl.engagements .eng-top { gap: 0.4rem 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#s1">Skip to the memo</a>
+
+  <div class="sheet">
+    <div class="doc-grid">
+
+      <!-- ============ STICKY TABLE OF CONTENTS (desktop rail) ============ -->
+      <nav class="toc" aria-label="Table of contents">
+        <div class="toc-inner">
+          <span class="label toc-kicker">Contents</span>
+          <ol>
+            <li><a href="#s1"><span class="n mono">§1</span><span>The problem we keep seeing</span></a></li>
+            <li><a href="#s2"><span class="n mono">§2</span><span>What we build</span></a></li>
+            <li><a href="#s3"><span class="n mono">§3</span><span>How we work</span></a></li>
+            <li><a href="#s4"><span class="n mono">§4</span><span>What an engagement costs to find out</span></a></li>
+            <li><a href="#s5"><span class="n mono">§5</span><span>Whether this is worth doing at all</span></a></li>
+            <li><a href="#s6"><span class="n mono">§6</span><span>How to reach us</span></a></li>
+            <li><a href="#appendix-a"><span class="n mono">A</span><span>A self-check</span></a></li>
+            <li><a href="#appendix-b"><span class="n mono">B</span><span>Plain-English glossary</span></a></li>
+          </ol>
+          <div class="toc-foot">
+            <a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call →</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- ============ DOCUMENT ============ -->
+      <div class="doc">
+
+        <!-- ---------- MOBILE TOC ---------- -->
+        <nav class="toc-mobile" aria-label="Table of contents">
+          <details>
+            <summary>Contents</summary>
+            <ol>
+              <li><a href="#s1"><span class="n">§1</span>The problem we keep seeing</a></li>
+              <li><a href="#s2"><span class="n">§2</span>What we build</a></li>
+              <li><a href="#s3"><span class="n">§3</span>How we work</a></li>
+              <li><a href="#s4"><span class="n">§4</span>What an engagement costs to find out</a></li>
+              <li><a href="#s5"><span class="n">§5</span>Whether this is worth doing at all</a></li>
+              <li><a href="#s6"><span class="n">§6</span>How to reach us</a></li>
+              <li><a href="#appendix-a"><span class="n">A</span>A self-check</a></li>
+              <li><a href="#appendix-b"><span class="n">B</span>Plain-English glossary</a></li>
+            </ol>
+          </details>
+        </nav>
+
+        <!-- ---------- MEMO HEADER ---------- -->
+        <header class="memo-head">
+          <hr class="rule-top" aria-hidden="true">
+          <p class="org">Kentro AI Labs <span class="doctype">— Working memo</span></p>
+          <h1>
+            <span class="subj-label">Subject</span>
+            What we build, how we engage, and what it costs to find out
+          </h1>
+
+          <dl class="memo-meta">
+            <div><dt>Date</dt><dd>July 2026</dd></div>
+            <div><dt>Version</dt><dd>1.0</dd></div>
+            <div><dt>Prepared for</dt><dd>Prospective clients</dd></div>
+            <div><dt>Reading time</dt><dd>About 6 minutes</dd></div>
+            <div><dt>From</dt><dd>The Kentro AI Labs team</dd></div>
+            <div><dt>Contact</dt><dd><a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call</a></dd></div>
+          </dl>
+
+          <div class="memo-block">
+            <div class="col">
+              <p class="abstract lede-first">
+                This is a memo, not a brochure. We wrote it to explain, in plain language and without the usual
+                noise, what an AI-engineering firm actually does: the kinds of system we build, how we run an
+                engagement, what it costs to find out whether a build is worth doing, and the cases in which we
+                will tell you not to build at all. Where the work has real engineering underneath it, we have put
+                the technical detail in the margin<span class="sn-ref" aria-hidden="true">1</span> so that the main
+                text stays readable end to end. If a paragraph raises a question you would ask on a call, the note
+                beside it is probably our answer.
+              </p>
+
+              <!-- inline footnote (mobile) for abstract note 1 -->
+              <details class="sn-inline">
+                <summary>1</summary>
+                <div class="sn-inline-body">
+                  <strong>On the margin notes.</strong> The notes carry the engineering — evaluation sets,
+                  orchestration, integrations, deployment on GCP and AWS, and cost per run. They are written
+                  for the engineer who will inherit the system. The main column never depends on them.
+                </div>
+              </details>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true">
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">1</span><strong>On the margin notes.</strong> The notes carry the
+                engineering — evaluation sets, orchestration, integrations, deployment on GCP and AWS, and cost
+                per run. They are written for the engineer who will inherit the system. The main column never
+                depends on them.
+              </aside>
+            </div>
+          </div>
+        </header>
+
+        <!-- ============ §1 THE PROBLEM ============ -->
+        <section class="memo-sec" id="s1" aria-labelledby="s1-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 1</span>
+              <h2 class="sec-title" id="s1-title">The problem we keep seeing</h2>
+
+              <p>
+                Most AI initiatives stall in the same place: the gap between a demo that convinces a room and a
+                system anyone can rely on. A working demonstration takes an afternoon. A system that runs every
+                day — grounded in your data, connected to your tools, watched, measured, and safe to change —
+                takes engineering.<span class="sn-ref" aria-hidden="true">2</span> That gap is where promising
+                projects quietly die, and it is the only part of this work worth paying for.
+              </p>
+
+              <p>
+                We recognize a handful of situations again and again. <em>“We’re drowning in paperwork”</em> —
+                a capable person spends hours retyping invoices, receipts, and forms into a system that could
+                read them. <em>“We know AI could help, but not where to start”</em> — every vendor pitch sounds
+                the same and none begins with your business. <em>“We tried a pilot and it stalled”</em> — a
+                demo worked in a meeting, everyone was excited, and then it never became part of the day,
+                because there was no connection to live data, no handling of the messy cases, and no way to
+                tell when it was wrong.<span class="sn-ref" aria-hidden="true">3</span>
+              </p>
+
+              <p>
+                None of these are model problems. They are engineering and judgment problems: which task is
+                worth automating, whether the data is there, how the result reaches the people who need it, and
+                how you know it is still correct next month. That is the work this memo is about.
+              </p>
+
+              <details class="sn-inline">
+                <summary>2</summary>
+                <div class="sn-inline-body">
+                  <strong>The gap, concretely.</strong> Grounding (retrieval over your own corpus), a tool or
+                  integration layer so the system reads and writes real records, an evaluation set that
+                  gates releases, structured logging of every run, and a rollback path. A prototype has none
+                  of these; a production system is mostly these.
+                </div>
+              </details>
+              <details class="sn-inline">
+                <summary>3</summary>
+                <div class="sn-inline-body">
+                  <strong>Why pilots stall.</strong> Usually one of four failure modes: no live-data
+                  integration, no handling of edge cases, no evaluation to catch regressions, or no owner
+                  once enthusiasm fades. We diagnose which one before proposing a rebuild.
+                </div>
+              </details>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true">
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">2</span><strong>The gap, concretely.</strong> Grounding (retrieval over
+                your own corpus), a tool or integration layer so the system reads and writes real records, an
+                evaluation set that gates releases, structured logging of every run, and a rollback path. A
+                prototype has none of these; a production system is mostly these.
+              </aside>
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">3</span><strong>Why pilots stall.</strong> Usually one of four failure
+                modes: no live-data integration, no handling of edge cases, no evaluation to catch
+                regressions, or no owner once enthusiasm fades. We diagnose which one before proposing a
+                rebuild.
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ §2 WHAT WE BUILD ============ -->
+        <section class="memo-sec" id="s2" aria-labelledby="s2-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 2</span>
+              <h2 class="sec-title" id="s2-title">What we build</h2>
+
+              <p>
+                Our work falls into three areas. Each is a running system, not a slide, and each is grounded in
+                your own data and connected to the tools you already use.
+              </p>
+
+              <h3 class="sub">Document processing</h3>
+              <p>
+                We pull structured, verified data out of the paperwork a business runs on, with a confidence
+                score on every field and a human-review path for anything the system is unsure about. A typical
+                build reads incoming invoices and receipts, extracts the fields you actually use, reconciles
+                them against your existing records, and writes the result straight into your accounting or ERP
+                system<span class="sn-ref" aria-hidden="true">4</span> — so the outcome is fewer keystrokes
+                every morning, not a clever demonstration.
+              </p>
+
+              <h3 class="sub">Assistants and agentic workflows</h3>
+              <p>
+                We build assistants and multi-step agents that answer from your own knowledge and act inside
+                your systems. Answers are traceable to a source; consequential actions pass an evaluation gate
+                or a person before they run.<span class="sn-ref" aria-hidden="true">5</span> Named examples: a
+                support assistant grounded in your documentation and past tickets, an internal agent that looks
+                up records and drafts the reply, or a workflow that carries a routine multi-step task from start
+                to finish across connected tools.
+              </p>
+
+              <h3 class="sub">Team enablement</h3>
+              <p>
+                We help the people whose work changes use these tools well and safely — practical training on
+                real tasks from your week, prompt patterns and review checklists for your workflows, and plain
+                guidelines on what is safe to share. Not a one-off workshop, but habits and guardrails that hold
+                after we leave.
+              </p>
+
+              <p>
+                Underneath all three is ordinary software engineering done well. Our team brings more than
+                fifteen years across full-stack and backend development, data-intensive systems, cloud
+                infrastructure on Google Cloud and AWS, and machine-learning platforms.<span class="sn-ref" aria-hidden="true">6</span>
+                That substrate is what separates a promising demo from something you can run on Monday morning.
+              </p>
+
+              <details class="sn-inline">
+                <summary>4</summary>
+                <div class="sn-inline-body">
+                  <strong>Extraction stack.</strong> OCR or native text extraction, an LLM pass constrained to
+                  a schema, deterministic validation against your ledger, and per-field confidence. Documents
+                  below threshold route to a review queue rather than being written blind. Integration is
+                  through the accounting or ERP system’s existing API — no new tool for the team.
+                </div>
+              </details>
+              <details class="sn-inline">
+                <summary>5</summary>
+                <div class="sn-inline-body">
+                  <strong>Grounding and orchestration.</strong> Retrieval over your corpus with citations back
+                  to the source passage; a tool layer with typed inputs and outputs; human-in-the-loop
+                  thresholds on consequential actions. A wrong answer with a citation is worse than an honest
+                  “I don’t know,” so we design the failure modes before the conversation.
+                </div>
+              </details>
+              <details class="sn-inline">
+                <summary>6</summary>
+                <div class="sn-inline-body">
+                  <strong>Where it runs.</strong> Deployments on Google Cloud and AWS, with managed
+                  model endpoints or self-hosted inference depending on your data constraints. We track cost
+                  per run from the first release — a document pipeline commonly lands around a few cents per
+                  document — so the unit economics are known before volume makes them urgent.
+                </div>
+              </details>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true">
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">4</span><strong>Extraction stack.</strong> OCR or native text extraction,
+                an LLM pass constrained to a schema, deterministic validation against your ledger, and per-field
+                confidence. Documents below threshold route to a review queue rather than being written blind.
+                Integration is through the accounting or ERP system’s existing API — no new tool for the team.
+              </aside>
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">5</span><strong>Grounding and orchestration.</strong> Retrieval over your
+                corpus with citations back to the source passage; a tool layer with typed inputs and outputs;
+                human-in-the-loop thresholds on consequential actions. A wrong answer with a citation is worse
+                than an honest “I don’t know,” so we design the failure modes before the conversation.
+              </aside>
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">6</span><strong>Where it runs.</strong> Deployments on Google Cloud and
+                AWS, with managed model endpoints or self-hosted inference depending on your data constraints.
+                We track cost per run from the first release — a document pipeline commonly lands around a few
+                cents per document — so the unit economics are known before volume makes them urgent.
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ §3 HOW WE WORK ============ -->
+        <section class="memo-sec" id="s3" aria-labelledby="s3-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 3</span>
+              <h2 class="sec-title" id="s3-title">How we work</h2>
+
+              <p>
+                A prototype is a question; production is the answer, and it has a checklist. These are the four
+                practices we hold to on every build, not extras we quote separately.
+              </p>
+
+              <ol class="clauses">
+                <li>
+                  <span class="clause-h">We evaluate before launch, and keep evaluating.</span>
+                  <p>
+                    We build a representative test set from your real cases and gate releases against it.<span class="sn-ref" aria-hidden="true">7</span>
+                    A change that improves one thing and quietly breaks another should fail the gate, not the
+                    customer.
+                  </p>
+                </li>
+                <li>
+                  <span class="clause-h">Every run is traceable.</span>
+                  <p>
+                    Inputs, tool calls, model outputs, and costs are logged so you can answer “why did it do
+                    that?” after the fact.<span class="sn-ref" aria-hidden="true">8</span> Operating a system
+                    you cannot see into is guessing.
+                  </p>
+                </li>
+                <li>
+                  <span class="clause-h">There is a safe path back.</span>
+                  <p>
+                    Prompts, models, and tools are versioned, and changes ship behind a switch we can reverse.
+                    When something regresses — and eventually something will — recovery is a decision, not an
+                    incident.
+                  </p>
+                </li>
+                <li>
+                  <span class="clause-h">You own what we build.</span>
+                  <p>
+                    The code, the prompts, and the data are yours, documented for a team that is not us. We
+                    would rather build something you can run than something that needs us to keep breathing.
+                  </p>
+                </li>
+              </ol>
+
+              <details class="sn-inline">
+                <summary>7</summary>
+                <div class="sn-inline-body">
+                  <strong>Evaluation, concretely.</strong> A labeled set of known cases scored on the metrics
+                  that matter for the task — exact-match on extracted fields, grounded-answer accuracy, refusal
+                  behavior. The gate runs in the deployment pipeline; a build that drops below baseline does not
+                  ship.
+                </div>
+              </details>
+              <details class="sn-inline">
+                <summary>8</summary>
+                <div class="sn-inline-body">
+                  <strong>Observability.</strong> Structured traces per run — the prompt, retrieved context,
+                  tool calls, tokens, latency, and cost — retained so a regression is debuggable rather than
+                  mysterious. This is also how we hold cost per run to a number you agreed to.
+                </div>
+              </details>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true">
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">7</span><strong>Evaluation, concretely.</strong> A labeled set of known
+                cases scored on the metrics that matter for the task — exact-match on extracted fields,
+                grounded-answer accuracy, refusal behavior. The gate runs in the deployment pipeline; a build
+                that drops below baseline does not ship.
+              </aside>
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">8</span><strong>Observability.</strong> Structured traces per run — the
+                prompt, retrieved context, tool calls, tokens, latency, and cost — retained so a regression is
+                debuggable rather than mysterious. This is also how we hold cost per run to a number you agreed
+                to.
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ §4 ENGAGEMENT + COST ============ -->
+        <section class="memo-sec" id="s4" aria-labelledby="s4-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 4</span>
+              <h2 class="sec-title" id="s4-title">What an engagement looks like, and what it costs to find out</h2>
+
+              <p>
+                An engagement moves through up to three shapes. You always know what you are buying before we
+                begin, you can stop after any stage, and the discovery call that precedes all of it is free.
+              </p>
+
+              <dl class="engagements">
+                <div class="eng">
+                  <div class="eng-top">
+                    <dt>Assess</dt>
+                    <span class="eng-shape">Fixed fee · about two weeks</span>
+                  </div>
+                  <dd>
+                    <p>
+                      We look at one candidate workflow, your data, and your systems, then tell you plainly
+                      whether to build it — and if so, exactly what.
+                    </p>
+                    <ul class="deliver">
+                      <li>A written findings document, not a slide deck</li>
+                      <li>A clear build-or-do-not-build recommendation</li>
+                      <li>A scoped design and cost estimate for the Build, if warranted</li>
+                      <li>The data and integration risks we found, named honestly</li>
+                    </ul>
+                    <p class="eng-note">You can stop here with a clear answer and owe nothing further.</p>
+                  </dd>
+                </div>
+
+                <div class="eng">
+                  <div class="eng-top">
+                    <dt>Build</dt>
+                    <span class="eng-shape">Fixed scope · fixed price</span>
+                  </div>
+                  <dd>
+                    <p>
+                      We build the system defined in the Assess to a scope and price agreed in writing, and
+                      deploy it into your workflow rather than handing over a prototype.<span class="sn-ref" aria-hidden="true">9</span>
+                    </p>
+                    <ul class="deliver">
+                      <li>A working system deployed in your environment</li>
+                      <li>Evaluation tests and a human-review path built in</li>
+                      <li>Source code, prompts, and configuration, handed to you</li>
+                      <li>Documentation your team can maintain from</li>
+                    </ul>
+                    <p class="eng-note">You can stop here and run it yourself; the handover is part of the work.</p>
+                  </dd>
+                </div>
+
+                <div class="eng">
+                  <div class="eng-top">
+                    <dt>Operate</dt>
+                    <span class="eng-shape">Monthly retainer · optional</span>
+                  </div>
+                  <dd>
+                    <p>
+                      Models drift, data changes, and edge cases surface in the real world. If you want it, we
+                      monitor the system, keep it accurate, and improve it as your needs move.<span class="sn-ref" aria-hidden="true">10</span>
+                    </p>
+                    <ul class="deliver">
+                      <li>Monitoring of accuracy, cost, and failures in production</li>
+                      <li>Regular tuning as your data and volumes shift</li>
+                      <li>A named point of contact and a response commitment</li>
+                      <li>No lock-in — take operations in-house whenever you choose</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+
+              <p style="margin-top:1.5rem;">
+                Prices are fixed and agreed in writing before each stage. If the scope changes, we agree the
+                change with you first — never after the invoice.
+              </p>
+
+              <details class="sn-inline">
+                <summary>9</summary>
+                <div class="sn-inline-body">
+                  <strong>What “deployed” means.</strong> Running in your environment behind your auth, wired
+                  to the real systems of record, with the evaluation gate, logging, and rollback switch from §3
+                  in place from the first release — not retrofitted before launch.
+                </div>
+              </details>
+              <details class="sn-inline">
+                <summary>10</summary>
+                <div class="sn-inline-body">
+                  <strong>What operating actually involves.</strong> Watching the evaluation metrics and cost
+                  per run over time, re-tuning retrieval and prompts as the corpus grows, catching model or
+                  API changes upstream, and rolling back cleanly when a change regresses.
+                </div>
+              </details>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true">
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">9</span><strong>What “deployed” means.</strong> Running in your
+                environment behind your auth, wired to the real systems of record, with the evaluation gate,
+                logging, and rollback switch from §3 in place from the first release — not retrofitted before
+                launch.
+              </aside>
+              <aside class="sidenote">
+                <span class="sn-label">Note</span>
+                <span class="sn-num">10</span><strong>What operating actually involves.</strong> Watching the
+                evaluation metrics and cost per run over time, re-tuning retrieval and prompts as the corpus
+                grows, catching model or API changes upstream, and rolling back cleanly when a change
+                regresses.
+              </aside>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============ §5 WORTH DOING ============ -->
+        <section class="memo-sec" id="s5" aria-labelledby="s5-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 5</span>
+              <h2 class="sec-title" id="s5-title">Whether this is worth doing at all</h2>
+
+              <p>
+                Sometimes the honest answer is no. Not every business needs AI yet, and some problems are
+                cheaper to fix with a spreadsheet, a process change, or a plain piece of software. When that is
+                what we find, we say so in the Assess findings and recommend against a build — and you will have
+                paid a fixed fee for a clear answer rather than a stalled project. We would rather forgo an
+                engagement than ship a system you cannot depend on.
+              </p>
+
+              <p>These are the criteria we use to say no:</p>
+
+              <ul class="criteria">
+                <li><strong>The data is not there.</strong> The records the task depends on live only in inboxes and people’s heads, and getting them into a usable form is the real first project.</li>
+                <li><strong>The workflow is not stable.</strong> The task changes shape week to week, so there is no fixed definition of a correct result to build against.</li>
+                <li><strong>A simpler tool would do.</strong> The problem is a rules engine, an export, or a form — not a model — and calling it AI would only add cost and risk.</li>
+                <li><strong>The value does not clear the cost.</strong> The volume is too low, or the outcome too cheap, for automation to pay for itself once you count the cost per run.</li>
+              </ul>
+
+              <p style="margin-top:1.3rem;">
+                A stalled pilot is more expensive than an honest no. Hearing which of these applies to you —
+                early, in writing — is often the most valuable thing an Assess produces.
+              </p>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <!-- ============ §6 REACH US ============ -->
+        <section class="memo-sec" id="s6" aria-labelledby="s6-title">
+          <div class="memo-block">
+            <div class="col">
+              <span class="sec-num mono">§ 6</span>
+              <h2 class="sec-title" id="s6-title">How to reach us</h2>
+
+              <p>
+                Tell us the one process you would most like to stop doing by hand. The discovery call is a short,
+                no-obligation conversation about your work — not a sales pitch — and we will tell you honestly
+                whether we can help before anyone talks about scope or cost.
+              </p>
+
+              <div class="reach">
+                <a class="book" href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call →</a>
+                <span class="direct">or write to <a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">hello@kentrolabs.ai</a></span>
+              </div>
+
+              <p class="signature">— The Kentro AI Labs team</p>
+            </div>
+
+            <div class="sidenotes" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <!-- ============ APPENDIX A: SELF-CHECK ============ -->
+        <section class="memo-sec" id="appendix-a" aria-labelledby="apa-title">
+          <div class="col appendix-lead">
+            <span class="sec-num mono">Appendix A</span>
+            <h2 class="sec-title" id="apa-title">A self-check</h2>
+            <p>
+              These are the eight questions we would ask on the first call — the lenses that decide whether an
+              AI system survives real use rather than merely demonstrating well. Score yourself first if you
+              like. It is a self-assessment, not an audit: it reflects your own answers, stores nothing, and
+              sends nothing anywhere.
+            </p>
+          </div>
+
+          <div class="check" id="check">
+            <div class="check-head">
+              <span class="ttl">Readiness self-check</span>
+              <span class="ct">8 questions</span>
+            </div>
+            <div class="check-body">
+
+              <!-- interactive (JS) -->
+              <div class="js-only" id="quiz-app">
+                <div class="meter" aria-hidden="true">
+                  <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+                  <span class="meter-count" id="meterCount">0 / 8</span>
+                </div>
+                <div id="questionZone" aria-live="polite"></div>
+                <div class="result" id="resultZone" hidden aria-live="polite"></div>
+              </div>
+
+              <!-- no-JS fallback: the eight lenses listed in text -->
+              <div class="no-js-fallback">
+                <p style="margin-top:0;font-size:0.96rem;color:var(--ink-2);">
+                  The interactive stepper needs JavaScript. Here are the eight questions in full — judge
+                  yourself honestly on each, then tell us where you landed.
+                </p>
+                <ol class="lens-list" id="nojsLenses">
+                  <li><span class="ll-lens">01 · Data</span><span class="ll-q">Do the records this task depends on already live in a system that can be searched or exported, rather than only in inboxes and people’s heads?</span></li>
+                  <li><span class="ll-lens">02 · Workflow fit</span><span class="ll-q">Have you identified a specific, repeatable task with a clear definition of a correct result, rather than a general wish to use AI somewhere?</span></li>
+                  <li><span class="ll-lens">03 · Integration</span><span class="ll-q">Do the tools involved offer an API, an export, or another reliable way for a system to read from and write back to them?</span></li>
+                  <li><span class="ll-lens">04 · Evaluation</span><span class="ll-q">Could you gather a set of examples with known correct answers to test the system’s quality before and after it goes live?</span></li>
+                  <li><span class="ll-lens">05 · Oversight</span><span class="ll-q">Is it clear who reviews the AI’s output and what happens when it is unsure, before it touches a real decision?</span></li>
+                  <li><span class="ll-lens">06 · Cost model</span><span class="ll-q">Do you have a rough sense of what one automated run is worth to you and roughly what it should be allowed to cost?</span></li>
+                  <li><span class="ll-lens">07 · Security</span><span class="ll-q">Do you know which of the data involved is sensitive and what your privacy or contractual rules require before it leaves your systems?</span></li>
+                  <li><span class="ll-lens">08 · Team adoption</span><span class="ll-q">Are the people whose daily work would change involved early and open to a new way of doing the task?</span></li>
+                </ol>
+                <p style="margin-top:1rem;font-size:0.9rem;">
+                  <a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">Book a discovery call</a> and
+                  tell us how many you could answer yes to.
+                </p>
+              </div>
+            </div>
+          </div>
+          <p class="check-foot">
+            The real version of this check is the Assess engagement in §4, run against your actual data and
+            systems. This one just gives you a first read.
+          </p>
+        </section>
+
+        <!-- ============ APPENDIX B: GLOSSARY ============ -->
+        <section class="memo-sec" id="appendix-b" aria-labelledby="apb-title">
+          <div class="col">
+            <span class="sec-num mono">Appendix B</span>
+            <h2 class="sec-title" id="apb-title">Plain-English glossary</h2>
+            <p>
+              A few terms from this memo, each in one sentence. If we cannot explain a thing plainly, we have
+              not understood it well enough.
+            </p>
+
+            <dl class="glossary">
+              <div>
+                <dt>Agent<span class="term-mono">agent</span></dt>
+                <dd>A program that uses a language model to decide what to do next and then takes the action itself, rather than only producing text for a person to act on.</dd>
+              </div>
+              <div>
+                <dt>Agentic workflow<span class="term-mono">workflow</span></dt>
+                <dd>A task broken into steps that an agent carries out in order — looking things up, deciding, and acting across several tools — with checkpoints where a person can intervene.</dd>
+              </div>
+              <div>
+                <dt>Grounding / RAG<span class="term-mono">retrieval</span></dt>
+                <dd>Answering from your own documents by retrieving the relevant passages first, so the reply is based on your facts and can be traced back to its source.</dd>
+              </div>
+              <div>
+                <dt>Evaluation set<span class="term-mono">eval set</span></dt>
+                <dd>A collection of example cases with known correct answers, used to measure how good the system is before launch and to catch it getting worse afterward.</dd>
+              </div>
+              <div>
+                <dt>Human in the loop<span class="term-mono">oversight</span></dt>
+                <dd>A deliberate point where a person reviews or approves the system’s output — usually when it is unsure or the decision carries real consequences.</dd>
+              </div>
+              <div>
+                <dt>Inference cost<span class="term-mono">cost / run</span></dt>
+                <dd>What it costs each time the model runs; because it scales with usage, we track it from the first release so the economics are known before volume makes them urgent.</dd>
+              </div>
+              <div>
+                <dt>Confidence threshold<span class="term-mono">threshold</span></dt>
+                <dd>The score below which the system stops trusting itself and routes a case to a person instead of acting on it automatically.</dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+
+        <!-- ============ DOCUMENT FOOTER ============ -->
+        <div class="doc-footer">
+          <p class="revision">
+            <span class="rev-line">Kentro AI Labs — Working memo · v1.0 — first public edition · July 2026.</span>
+            <span class="rev-line">Prepared for prospective clients. Comments to <a href="mailto:hello@kentrolabs.ai?subject=Memo%20feedback">hello@kentrolabs.ai</a>.</span>
+          </p>
+        </div>
+
+        <!-- ============ SITE FOOTER ============ -->
+        <footer class="site" role="contentinfo">
+          <div class="site-inner">
+            <span class="site-brand">Kentro AI Labs</span>
+            <nav class="site-links" aria-label="Footer">
+              <a href="/products/agent-k">Agent K</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="/kentro/privacy">Privacy</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="/kentro/terms">Terms</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="/kentro/support">Support</a>
+              <span class="sep" aria-hidden="true">·</span>
+              <a href="mailto:hello@kentrolabs.ai?subject=Discovery%20call">hello@kentrolabs.ai</a>
+            </nav>
+          </div>
+          <p class="site-legal">© 2026 Kentro AI Labs Inc · kentrolabs.ai</p>
+        </footer>
+
+      </div><!-- /.doc -->
+    </div><!-- /.doc-grid -->
+  </div><!-- /.sheet -->
+
+  <script>
+  /* ============ scroll-spy for the ToC (degrades gracefully) ============ */
+  (function () {
+    "use strict";
+    var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+    if (!links.length || !("IntersectionObserver" in window)) return;
+
+    var map = {};
+    links.forEach(function (a) {
+      var id = a.getAttribute("href").slice(1);
+      var el = document.getElementById(id);
+      if (el) map[id] = a;
+    });
+
+    var visible = {};
+    function setCurrent() {
+      // choose the topmost currently-intersecting section
+      var best = null, bestTop = Infinity;
+      Object.keys(visible).forEach(function (id) {
+        if (!visible[id]) return;
+        var el = document.getElementById(id);
+        var top = el.getBoundingClientRect().top;
+        if (top < bestTop) { bestTop = top; best = id; }
+      });
+      links.forEach(function (a) { a.removeAttribute("aria-current"); });
+      if (best && map[best]) map[best].setAttribute("aria-current", "true");
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        visible[e.target.id] = e.isIntersecting;
+      });
+      setCurrent();
+    }, { rootMargin: "-20% 0px -70% 0px", threshold: 0 });
+
+    Object.keys(map).forEach(function (id) {
+      io.observe(document.getElementById(id));
+    });
+  })();
+
+  /* ============ readiness self-check (reuses c3 logic verbatim) ============ */
+  (function () {
+    "use strict";
+    document.documentElement.classList.add("has-js");
+
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    var LENSES = [
+      { key: "Data",
+        q: "Do the records this task depends on already live in a system that can be searched or exported, rather than only in inboxes and people's heads?" },
+      { key: "Workflow fit",
+        q: "Have you identified a specific, repeatable task with a clear definition of a correct result, rather than a general wish to use AI somewhere?" },
+      { key: "Integration",
+        q: "Do the tools involved offer an API, an export, or another reliable way for a system to read from and write back to them?" },
+      { key: "Evaluation",
+        q: "Could you gather a set of examples with known correct answers to test the system's quality before and after it goes live?" },
+      { key: "Oversight",
+        q: "Is it clear who reviews the AI's output and what happens when it is unsure, before it touches a real decision?" },
+      { key: "Cost model",
+        q: "Do you have a rough sense of what one automated run is worth to you and roughly what it should be allowed to cost?" },
+      { key: "Security",
+        q: "Do you know which of the data involved is sensitive and what your privacy or contractual rules require before it leaves your systems?" },
+      { key: "Team adoption",
+        q: "Are the people whose daily work would change involved early and open to a new way of doing the task?" }
+    ];
+
+    var FIX = {
+      "Data":          "Get the records this task relies on into one searchable, exportable place. A short data-readiness pass usually pays for itself before any model is involved.",
+      "Workflow fit":  "Pick one repeatable task and write down exactly what a correct outcome looks like. A sharp definition of done is what makes automation measurable.",
+      "Integration":   "Confirm the systems of record can be read from and written to programmatically. Without a way in and out, results stay stranded in a side tool.",
+      "Evaluation":    "Assemble a small set of examples with known-good answers. This becomes your test suite and the only honest way to prove quality before launch.",
+      "Oversight":     "Decide who reviews output, when a human stays in the loop, and what happens on low confidence — before the system touches real decisions.",
+      "Cost model":    "Estimate what a correct result is worth and what each run should cost. Knowing the unit economics early keeps a working pilot from becoming a surprise bill.",
+      "Security":      "Map which data is sensitive and what your privacy and contractual constraints require. This shapes where the model can run and what it may see.",
+      "Team adoption": "Bring the people whose work changes in early. Adoption, not the model, is where most of the value is won or lost."
+    };
+
+    var TIERS = {
+      exploring: {
+        name: "Exploring",
+        summary: "You are early. The groundwork that makes an AI build pay off — reliable data, a well-defined task, a way to measure quality — is not yet in place. That is a normal and fixable starting point, and knowing it now saves a stalled pilot later."
+      },
+      piloting: {
+        name: "Piloting",
+        summary: "You have real foundations and some clear gaps. This is the range where a focused build succeeds or stalls on the specifics. Closing the lenses below is usually what moves a promising pilot into dependable production."
+      },
+      production: {
+        name: "Production-ready",
+        summary: "You are in strong shape across the lenses that decide whether a deployment survives real use. The remaining work is disciplined execution — shipping with evaluation, oversight, and cost controls in place, and keeping them there as usage grows."
+      }
+    };
+
+    // Pure scoring — verbatim from c3, unit-tested separately.
+    function score(answers) {
+      var s = 0, weak = [], i;
+      for (i = 0; i < answers.length; i++) {
+        if (answers[i] === true) s++;
+        else if (answers[i] === false && weak.length < 2) weak.push(i);
+      }
+      var tier;
+      if (s <= 3) tier = "exploring";
+      else if (s <= 6) tier = "piloting";
+      else tier = "production";
+      return { s: s, tier: tier, weak: weak };
+    }
+
+    var answers = new Array(LENSES.length).fill(null);
+    var current = 0;
+
+    var qZone = document.getElementById("questionZone");
+    var rZone = document.getElementById("resultZone");
+    var fill  = document.getElementById("meterFill");
+    var count = document.getElementById("meterCount");
+    if (!qZone) return;
+
+    function answeredCount() {
+      return answers.filter(function (a) { return a !== null; }).length;
+    }
+    function updateMeter() {
+      var n = answeredCount();
+      fill.style.width = (n / LENSES.length * 100) + "%";
+      count.textContent = n + " / " + LENSES.length;
+    }
+    function esc(str) {
+      return String(str).replace(/[&<>"']/g, function (c) {
+        return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+      });
+    }
+
+    function renderQuestion() {
+      rZone.hidden = true;
+      qZone.style.display = "";
+      var lens = LENSES[current];
+      var chosen = answers[current];
+
+      qZone.innerHTML =
+        '<div class="question">' +
+          '<div class="q-meta">' +
+            '<span class="q-index">' + String(current + 1).padStart(2, "0") + ' / 08</span>' +
+            '<span class="q-lens">' + esc(lens.key) + '</span>' +
+          '</div>' +
+          '<p class="q-text" id="qtext">' + esc(lens.q) + '</p>' +
+          '<div class="q-answers" role="group" aria-labelledby="qtext">' +
+            '<button type="button" class="ans ans-yes" data-val="yes" aria-pressed="' + (chosen === true) + '">Yes</button>' +
+            '<button type="button" class="ans ans-no" data-val="no" aria-pressed="' + (chosen === false) + '">No</button>' +
+          '</div>' +
+          '<div class="q-nav">' +
+            '<button type="button" class="q-back" id="backBtn"' + (current === 0 ? ' disabled' : '') + '>&larr; Back</button>' +
+            '<span class="q-hint">' + (current === LENSES.length - 1 ? 'Last question' : 'Choose to continue') + '</span>' +
+          '</div>' +
+        '</div>';
+
+      updateMeter();
+
+      var btns = qZone.querySelectorAll(".ans");
+      Array.prototype.forEach.call(btns, function (b) {
+        b.addEventListener("click", function () {
+          answers[current] = (b.getAttribute("data-val") === "yes");
+          Array.prototype.forEach.call(btns, function (x) {
+            x.setAttribute("aria-pressed", String((x.getAttribute("data-val") === "yes") === answers[current]));
+          });
+          updateMeter();
+          advance();
+        });
+      });
+
+      var back = document.getElementById("backBtn");
+      if (back) back.addEventListener("click", function () {
+        if (current > 0) { current--; renderQuestion(); focusQuestion(); }
+      });
+    }
+
+    function advance() {
+      if (current < LENSES.length - 1) {
+        current++;
+        renderQuestion();
+        focusQuestion();
+      } else {
+        renderResult();
+      }
+    }
+    function focusQuestion() {
+      var first = qZone.querySelector(".ans");
+      if (first) first.focus();
+    }
+
+    function renderResult() {
+      var res = score(answers);
+      var tier = TIERS[res.tier];
+
+      var mailtoSubject = encodeURIComponent("Discovery call — Readiness tier: " + tier.name + " (" + res.s + "/8)");
+      var lensList = res.weak.map(function (i) { return LENSES[i].key; }).join(", ");
+      var mailtoBody = encodeURIComponent(
+        "I read the Kentro AI Labs working memo and ran the self-check in Appendix A.\n\n" +
+        "Result: " + tier.name + " — " + res.s + " of 8 questions answered yes.\n" +
+        (res.weak.length
+          ? "Questions to address first: " + lensList + ".\n"
+          : "No weak lenses flagged.\n") +
+        "\nI would like to talk through what the right first step is.\n"
+      );
+      var mailto = "mailto:hello@kentrolabs.ai?subject=" + mailtoSubject + "&body=" + mailtoBody;
+
+      var fixHtml;
+      if (res.weak.length === 0) {
+        fixHtml =
+          '<div class="fixfirst">' +
+            '<div class="fixfirst-head">No questions flagged</div>' +
+            '<ul class="fixfirst-list"><li>' +
+              '<span class="ff-lens">All eight answered yes</span>' +
+              '<span class="ff-text">You cleared every question in this quick read. The real test is running the same eight against your actual data and systems — that is what the Assess engagement does.</span>' +
+            '</li></ul>' +
+          '</div>';
+      } else {
+        var items = res.weak.map(function (i) {
+          return '<li>' +
+                   '<span class="ff-lens">' + esc(LENSES[i].key) + '</span>' +
+                   '<span class="ff-text">' + esc(FIX[LENSES[i].key]) + '</span>' +
+                 '</li>';
+        }).join("");
+        fixHtml =
+          '<div class="fixfirst">' +
+            '<div class="fixfirst-head">Address ' + (res.weak.length === 1 ? "this question" : "these two questions") + ' first</div>' +
+            '<ul class="fixfirst-list">' + items + '</ul>' +
+          '</div>';
+      }
+
+      rZone.innerHTML =
+        '<div class="result-head">' +
+          '<span class="result-score">' + res.s + '<small>&thinsp;/&thinsp;8</small></span>' +
+          '<span class="result-tierline">' +
+            '<span class="label">Your tier</span>' +
+            '<span class="result-tier">' + esc(tier.name) + '</span>' +
+          '</span>' +
+        '</div>' +
+        '<p class="result-summary">' + esc(tier.summary) + '</p>' +
+        fixHtml +
+        '<div class="result-actions">' +
+          '<a class="book" href="' + mailto + '">Book a call about this result →</a>' +
+          '<button type="button" class="restart" id="restartBtn">Start over</button>' +
+        '</div>' +
+        '<p class="result-note">Nothing here was saved or sent. The link drafts an email in your own mail app with your tier and score filled in — you choose whether to send it.</p>';
+
+      qZone.style.display = "none";
+      rZone.hidden = false;
+      fill.style.width = "100%";
+      count.textContent = LENSES.length + " / " + LENSES.length;
+
+      rZone.setAttribute("tabindex", "-1");
+      rZone.focus();
+
+      document.getElementById("restartBtn").addEventListener("click", function () {
+        answers = new Array(LENSES.length).fill(null);
+        current = 0;
+        renderQuestion();
+        focusQuestion();
+      });
+    }
+
+    renderQuestion();
+  })();
+  </script>
+</body>
+</html>

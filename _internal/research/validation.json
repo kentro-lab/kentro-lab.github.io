@@ -1,0 +1,1729 @@
+[
+  {
+    "name": "2two2 Consulting",
+    "website": "http://2two2consulting.com",
+    "website_reachable": false,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Unable to determine; the website returned HTTP 404 on all protocol/subdomain variants tested (http/https, www/non-www).",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [],
+    "quality_notes": "Site is unreachable (404 on all URL variants); cannot evaluate design or content.",
+    "verdict_keep": false
+  },
+  {
+    "name": "4sight AI",
+    "website": "https://4sightai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "4SightAI builds domain-specific GenAI platforms (LLMs, AI agents, real-time decision systems) for governments and enterprises, and offers GenAI advisory/consulting, POC development, and end-to-end implementation services alongside several vertical AI products.",
+    "credibility": 3,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & advisory",
+      "GenAI project scoping & blueprint",
+      "AI architecture & planning",
+      "GenAI POC / rapid prototyping",
+      "end-to-end GenAI consulting/implementation",
+      "custom agent development",
+      "RAG / vector DB / semantic search",
+      "AI infrastructure (product: AI Envelop)"
+    ],
+    "niches": [
+      "government / public safety / police",
+      "CCTV & video surveillance analytics",
+      "media/news intelligence",
+      "consulting professionals (co-pilot product)",
+      "wellness/nutrition",
+      "personal finance",
+      "education"
+    ],
+    "quality_notes": "Site is a Next.js build with animated number counters and a broad, somewhat scattered product/service portfolio (police AI, news AI, finance co-pilot, education suite) that dilutes focus; copy is dense/jargon-heavy ('AI Ambitions Empowered!') rather than sharply differentiated, but the overall structure (services, products, industries) shows real substance.",
+    "verdict_keep": true
+  },
+  {
+    "name": "AI Leadership Institute",
+    "website": "https://skool.com/aili/about",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "AI Leadership Institute is a Skool.com community/course selling AI skills training and certifications, not a client-facing AI consulting firm.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [
+      "AI training for teams",
+      "certifications/courses"
+    ],
+    "niches": [
+      "individual professionals seeking AI upskilling"
+    ],
+    "quality_notes": "This is just a Skool.com community page (generic Skool platform template, not a custom site), offering courses/certifications rather than consulting services — not a real competitor site to benchmark for design.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Alive Studios.AI",
+    "website": "https://alivestudios.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "AliveStudios.AI positions itself as an \"AI transformation partner\" for middle-market companies (manufacturing, financial services, professional services, healthcare), offering AI audits, implementation, optimization, and retainer services plus a free automated \"AI Opportunity Scan\" as a lead magnet.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & audit",
+      "custom AI implementation",
+      "AI workflow automation",
+      "AI document search / knowledge systems",
+      "AI training for teams",
+      "fractional/retainer AI advisory",
+      "automated website AI-opportunity scan tool"
+    ],
+    "niches": [
+      "middle-market companies",
+      "manufacturing",
+      "financial services",
+      "professional services",
+      "healthcare",
+      "HME providers",
+      "distributors"
+    ],
+    "quality_notes": "Site is a JS SPA that only reveals content via a noscript fallback (poor for scraping/SEO robustness); copy pitches \"a full AI implementation team for the cost of one specialist,\" a solo-consultant framing device, with no named case studies, clients, or team bios. Contact address is a Wyoming registered-agent office, reinforcing a very small/shell-like operation despite polished marketing copy.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Anveshi.ai",
+    "website": "https://anveshi.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Anveshi.ai is an AI consultancy for small and mid-sized businesses, offering a phased \"discover → plan → implement\" engagement (branded as an expedition/climb) covering AI strategy, SEO/AEO/GEO, marketing, and workflow automation, with deep vertical focus (starting in family law, expanding to media, education, healthcare, retail).",
+    "credibility": 4,
+    "scale_signal": "solo",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "SEO/AEO/GEO (AI search optimization)",
+      "AI-powered marketing & lead generation",
+      "workflow automation / process audit",
+      "staff training & change management",
+      "fractional AI leadership / advisory"
+    ],
+    "niches": [
+      "family law",
+      "media & entertainment",
+      "education",
+      "healthcare",
+      "retail",
+      "SMBs"
+    ],
+    "quality_notes": "Distinctive, consistent mountaineering/expedition metaphor carried through copy and structure (Basecamp/Route Map/Ascent, 12-Objective Transformation Framework), with named cofounders and industry-specific pages rather than generic template copy; strong hook around GEO/AEO ('Share of Model' metric) shows genuine domain thinking, though it reads as a small (likely 2-person) shop rather than a larger firm.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Anyon Consulting",
+    "website": "https://anyonconsulting.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Minneapolis-based general software/BI consultancy offering custom software development, data engineering, cloud services, and Dynamics NAV development, with ML/Generative AI as one of several service lines.",
+    "credibility": 3,
+    "scale_signal": "2-10",
+    "site_quality": 2,
+    "service_categories": [
+      "ML and Generative AI",
+      "custom software development",
+      "data and database engineering",
+      "data analytics and visualization",
+      "cloud services",
+      "Dynamics NAV development",
+      "OCR tools"
+    ],
+    "niches": [
+      "general SMB",
+      "Minneapolis regional"
+    ],
+    "quality_notes": "Generic WordPress site (Yoast/SiteGround stack) with stock template layout and boilerplate marketing copy (\"Revolutionize your business...\") repeated across service blurbs; AI/ML is just one of six roughly equal service pillars, not the core positioning.",
+    "verdict_keep": false
+  },
+  {
+    "name": "BAY6.AI",
+    "website": "https://bay6.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Bay6 is an enterprise AI platform/product company (Connect6, Model6, Agent6) for regulated industries like insurance and financial services, plus a Forge6 advisory/consulting line for AI strategy and custom solution development.",
+    "credibility": 4,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & advisory (Forge6)",
+      "custom agent development (Agent6)",
+      "predictive modeling (Model6)",
+      "customer support automation (Connect6)",
+      "AI center of excellence setup",
+      "custom solution development"
+    ],
+    "niches": [
+      "insurance",
+      "financial services",
+      "education",
+      "legal services",
+      "healthcare",
+      "retail",
+      "travel/hospitality"
+    ],
+    "quality_notes": "Polished, professional enterprise positioning with a distinctive 'Think6' framework and named vertical products, but it's WordPress/Elementor-built with heavy caching bloat, placeholder-style imagery, and no visible case studies or team bios on the pages checked.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Beige Bananas",
+    "website": "https://beigebananas.com/",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Beige Bananas is a design-first data & AI consulting firm serving Fortune 500 enterprises in Media, CPG, Retail, and Insurance, offering strategy, data engineering, custom ML/GenAI, and operationalization services.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "data engineering / modernization",
+      "custom ML & GenAI model development",
+      "multi-agent systems",
+      "MLOps / GenAI Ops",
+      "BI & data storyboarding",
+      "agentic pipeline architecture"
+    ],
+    "niches": [
+      "Media & Entertainment",
+      "Consumer Packaged Goods",
+      "Retail & D2C",
+      "Insurance",
+      "Fortune 500 enterprises"
+    ],
+    "quality_notes": "Distinctive, non-templated brand voice (\"Intelligence is the new inventory\", \"Built with Love\") with a clear productized service menu and quantified impact claims (2,000+ stores, $12B+ revenue), though it lacks named clients/case studies and is a JS SPA with minimal server-rendered content, which could hurt SEO/scraping.",
+    "verdict_keep": true
+  },
+  {
+    "name": "CO/AI",
+    "website": "http://getcoai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "CO/AI is a daily AI newsletter/podcast/media brand delivering curated AI news, essays, and analysis for founders, operators, and executives — not a consulting or services firm.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [],
+    "niches": [
+      "founders",
+      "operators",
+      "executives",
+      "AI news readers"
+    ],
+    "quality_notes": "Standard WordPress newsletter site (Rank Math SEO, GTM) built to drive email/podcast subscriptions, not a services business; no case studies, client work, or service menu — irrelevant as an AI-consulting competitor benchmark.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Cocoon AI",
+    "website": "https://cocoon-ai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Cocoon AI (Cocoon AI, PBC) is an AI consulting firm serving mid-market businesses, offering fractional Chief AI Officer / AI Operating Partner engagements, custom AI software and agentic automation, and prototype sprints to move from strategy to production.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 4,
+    "service_categories": [
+      "Fractional Chief AI Officer / AI Operating Partner",
+      "AI strategy & governance",
+      "custom agent development / agentic AI",
+      "reliable automations",
+      "AI prototype sprints",
+      "managed AI operations",
+      "3-D digital twins & immersive experiences",
+      "real-time intelligence"
+    ],
+    "niches": [
+      "mid-market businesses"
+    ],
+    "quality_notes": "Named founders (CEO/CTO) with LinkedIn profiles, real address, structured data, distinct 'five engagement shapes' productized offer framing, and a differentiated positioning ('no pilot purgatory') rather than generic template copy; dedicated Insights/Team/Careers pages suggest real operating firm, not just a landing shell.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Crimson Sage Global LLC",
+    "website": "http://crimsonsageglobal.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "A general strategy/M&A consultancy for enterprises, investors, and government entities offering corporate strategy, fractional leadership, PMO, federal contracting readiness, and digital transformation; AI/\"Agentic AI\" appears only as one bullet within their top advanced-tier service.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "corporate strategy & execution",
+      "M&A advisory",
+      "fractional executive leadership",
+      "PMO / program management",
+      "federal contracting readiness",
+      "digital transformation (general, AI mentioned as one bullet)"
+    ],
+    "niches": [
+      "enterprises",
+      "investors",
+      "government / public sector"
+    ],
+    "quality_notes": "Generic Squarespace template with stock tiered-pricing service blocks and no case studies, portfolio, or team bios; nav oddly includes an unrelated \"Boudoir\" link suggesting template/content bleed, undermining credibility.",
+    "verdict_keep": false
+  },
+  {
+    "name": "EXRwebflow",
+    "website": "https://exrwebflow.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "A WordPress/Elementor site claiming to offer AI development, chatbot, LLM, MLOps, and cloud consulting services under a generic \"EXRWebflow\" brand, alongside unrelated smart contract dev.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom agent/chatbot development",
+      "generative AI consulting",
+      "MLOps consulting",
+      "data engineering",
+      "cloud services",
+      "AI automation",
+      "AI integration"
+    ],
+    "niches": [],
+    "quality_notes": "Templated Elementor/WordPress theme with fabricated schema.org markup (fake $10k-$50k pricing in \"Doller\" currency, fake 821 reviews/5.0 rating, a single \"Jamee\" author with generic Gravatar) — classic programmatic SEO farm rather than a real consultancy, with a sprawling keyword-stuffed service menu including irrelevant offerings like smart contract development.",
+    "verdict_keep": false
+  },
+  {
+    "name": "EaaS AI",
+    "website": "http://eaaservice.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Solo AI consulting/training practice led by Rachael Garnett, using a proprietary \"AI Persona Method\" to build custom AI assistants trained on client voice/data, with discovery, pilots, training, and support.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & assessment",
+      "custom AI persona / assistant development",
+      "AI training for teams",
+      "pilot programs / ROI demos",
+      "speaking"
+    ],
+    "niches": [
+      "nonprofits",
+      "public sector / government",
+      "solo entrepreneurs and small businesses"
+    ],
+    "quality_notes": "Generic WordPress Divi template with default fonts/layout and no visible case studies or portfolio, just a few short testimonials; copy leans on personal-brand/coach-style messaging ('make AI make sense') rather than substantive named services or client work, reading as a solo consultant/speaker site rather than a firm.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Elucidate AI",
+    "website": "https://elucidate.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Elucidate AI is a data science, automation, and AI consulting firm helping companies build predictive models, data pipelines, and AI-driven decision systems, with a focus on fintech and credit.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 3,
+    "service_categories": [
+      "prediction & monitoring (ML models)",
+      "data engineering / pipelines",
+      "AI/data strategic advisory",
+      "fintech credit risk systems"
+    ],
+    "niches": [
+      "fintech",
+      "credit/lending",
+      "marketing analytics",
+      "call center operations",
+      "open banking"
+    ],
+    "quality_notes": "Named founders, real case studies (Airvantage, Huduma Credit), client logos, and concrete metrics ($800M+ decisions, 15% KPI lift) give strong credibility, but the site is a fairly generic Webflow template with heavy tracking scripts and no distinctive visual identity.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Enso Labs",
+    "website": "https://ensolabs.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Principal-led AI managed-services studio in NYC that encodes client domain expertise into managed agents, building and operating agentic AI systems in production for enterprise clients.",
+    "credibility": 4,
+    "scale_signal": "solo",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap (AI Audit)",
+      "agentic systems development",
+      "multi-agent orchestration",
+      "AI transformation consulting",
+      "fractional/interim AI leadership",
+      "AI advertising & marketing automation",
+      "financial AI",
+      "healthcare AI & pharma compliance"
+    ],
+    "niches": [
+      "healthcare",
+      "finance",
+      "manufacturing",
+      "media",
+      "B2B tech",
+      "growth-stage companies",
+      "Fortune 500 enterprise"
+    ],
+    "quality_notes": "Polished modern Next.js site with tight, specific copy (named engagement tiers like \"2-week AI Audit\", vertical-specific service pages, an insights/blog section) rather than generic template filler; strong single-founder personal brand (Sav Banerjee, ex-Google/agency background, Anthropic/Google/OpenAI certifications) lends credibility despite being solo.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Execucom AI",
+    "website": "https://execucom.co",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Execucom is an AI implementation firm that audits client workflows, builds custom AI agents/systems, and trains staff to run them, targeting GovCon, professional services, and PE-backed companies.",
+    "credibility": 3,
+    "scale_signal": "solo",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap (audit)",
+      "custom agent development",
+      "workflow automation",
+      "AI training for teams",
+      "managed AI services / ongoing support"
+    ],
+    "niches": [
+      "GovCon / NatSec",
+      "professional services (law, accounting, consulting, staffing firms)",
+      "PE-backed companies preparing for exit"
+    ],
+    "quality_notes": "Clean modern Next.js site with a distinctive gradient hero, a clear branded 3-step methodology (AIT Method, AI Strategy Roadmap trademarked), and sharp vertical-specific messaging; however it's a single long-scroll landing page with no visible case studies, client logos, or team bios to back up credibility claims.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Fintechy",
+    "website": "https://fintechy.net",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Fintechy is an agentic AI consulting firm that designs, builds, and operates production AI systems for enterprises, focused on Finance, Healthcare, and Retail. They run diagnose-architect-build-scale engagements, from strategy through hands-on implementation of agentic/MCP-based systems.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom agent development",
+      "enterprise AI transformation",
+      "AI workflow automation",
+      "MCP/AI integration architecture",
+      "AI product engineering"
+    ],
+    "niches": [
+      "Finance",
+      "Healthcare",
+      "Retail",
+      "enterprises"
+    ],
+    "quality_notes": "Well-structured Next.js site with detailed schema.org markup, transparent pricing tiers ($150K-$400K pilots), a clear four-phase engagement methodology, dual US/India offices, and FAQ content showing genuine domain depth rather than generic AI-agency boilerplate.",
+    "verdict_keep": true
+  },
+  {
+    "name": "FirmAdapt",
+    "website": "https://firmadapt.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "FirmAdapt runs free AI-powered diagnostic audits of a company's operations, tech stack, and market position, then designs, builds, and operates bespoke AI agents, RPA bots, and automation systems to fix the waste identified.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 5,
+    "service_categories": [
+      "AI diagnostic audits",
+      "custom agent development",
+      "robotic process automation",
+      "AI architecture / readiness assessment",
+      "revenue & expense optimization automation",
+      "managed AI operations",
+      "fractional AI leadership / staffing"
+    ],
+    "niches": [
+      "mid-market operators",
+      "enterprise transformation leads",
+      "PE/VC portfolio companies",
+      "startups past PMF",
+      "professional services",
+      "e-commerce & retail",
+      "public/private company investors"
+    ],
+    "quality_notes": "Highly distinctive design with custom SVG diagrams, a serif/mono type pairing, and an unusually product-like free diagnostic tool (8-lens company scan) driving the funnel; copy is specific and non-templated ('We Find The Waste', 'Swarm AI Agents') rather than generic AI-agency boilerplate. Named founding team (3 people) with prior-employer logos, but no visible client case studies/logos of paying customers, which slightly caps credibility.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Frontier Foundry",
+    "website": "https://frontierfoundry.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Frontier Foundry builds and deploys custom, sovereign/on-premises AI systems (including air-gapped) for regulated industries like banking, government, and healthcare. They combine consulting/implementation services with named platforms and applications (Limni, Kundi, Foundry Lab, AutoCEN, Monui, Skyra, Fiducium).",
+    "credibility": 5,
+    "scale_signal": "11-50",
+    "site_quality": 4,
+    "service_categories": [
+      "custom AI system design & deployment",
+      "on-premises/air-gapped AI infrastructure",
+      "AI security & compliance (NYDFS, HIPAA, PQC)",
+      "AML/BSA automation",
+      "AI platform products (Limni, Kundi, Foundry Lab)",
+      "fractional/embedded AI implementation"
+    ],
+    "niches": [
+      "banking",
+      "asset management",
+      "government/SCIF environments",
+      "healthcare"
+    ],
+    "quality_notes": "Polished, content-rich Next.js/Astro site with named founder (ex-FDIC CIO), real case studies, industry-specific pages, glossary, media appearances, and a coherent 'sovereign/deterministic/quantum-resilient AI' brand narrative — notably more substantive than typical AI-consulting shells, though visual design leans corporate/generic-enterprise rather than distinctive.",
+    "verdict_keep": true
+  },
+  {
+    "name": "GenAI Protos",
+    "website": "https://genaiprotos.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "GenAI Protos is a full-stack AI engineering firm that designs, builds and deploys custom AI solutions (agentic AI, RAG, data engineering, edge/private AI) end-to-end from prototype to production, typically in 2-4 week sprints.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 4,
+    "service_categories": [
+      "custom agent development",
+      "RAG / knowledge systems",
+      "AI data engineering / ETL modernization",
+      "edge & private AI deployment",
+      "full-stack AI application development",
+      "AI labs / rapid experimentation & MVPs"
+    ],
+    "niches": [
+      "enterprise IT",
+      "healthcare (clinical trials)",
+      "finance",
+      "software engineering teams (Jira/SharePoint integrations)",
+      "startups and enterprises broadly"
+    ],
+    "quality_notes": "Modern Next.js site with specific, non-templated copy (named solutions like 'Chat-with-Jira', concrete metrics like '2-4 week MVPs', '20-30% faster delivery'), FAQ depth, and dual-office presence (Irvine CA + Pune India) signaling real team scale; design is competent but somewhat conventional SaaS-agency template feel rather than distinctive branding.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Global Technology Partners",
+    "website": "https://globaltechnologypartners.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Global Technology Partners is a broad IT services/staffing firm (custom software development, QA, cloud/devops, dedicated dev teams, staff augmentation) that also lists AI/ML as one of many generic service offerings.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "custom software development",
+      "staff augmentation / dedicated dev teams",
+      "QA engineering",
+      "cloud engineering & devops",
+      "UI/UX design & prototyping",
+      "data analytics",
+      "generic AI/ML solutions"
+    ],
+    "niches": [],
+    "quality_notes": "Generic Webflow template with stock-sounding copy (\"Unleash the Power of AI & Machine Learning\") and boilerplate FAQ/benefits sections typical of outsourcing/staffing agencies; AI/ML page reads as templated marketing filler rather than a distinct productized offering, with no case studies or client specifics visible.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Grace & Cronos",
+    "website": "https://graceandcronos.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Grace & Cronos is an AI strategy, systems architecture, and implementation firm that runs a \"Leverage Index\" diagnostic and then designs, builds, and ships production AI systems (agents, copilots, dashboards, automations) for client businesses.",
+    "credibility": 4,
+    "scale_signal": "solo",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & opportunity assessment",
+      "AI roadmap & systems architecture",
+      "custom agent development",
+      "workflow automation",
+      "executive dashboards & decision intelligence",
+      "customer-facing AI (chat/qualification)",
+      "alert/notification layers",
+      "generative content systems",
+      "fractional/ongoing AI advisory"
+    ],
+    "niches": [
+      "Healthcare",
+      "Legal",
+      "Financial Services",
+      "Retail",
+      "Supply Chain",
+      "Real Estate",
+      "Manufacturing",
+      "mid-market/enterprise leadership teams"
+    ],
+    "quality_notes": "Strong, non-templated copy with a named proprietary methodology (Leverage Index™), a structured 4-phase engagement model, and interactive elements (leverage map, quick assessment quiz); built on GoHighLevel (funnel-builder) infrastructure rather than a custom site, and it's a two-person shop (founder + ops associate) founded in 2025 despite fairly polished, confident brand voice.",
+    "verdict_keep": true
+  },
+  {
+    "name": "GreenData Ventures",
+    "website": "https://greendata.io",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "GreenData Ventures is a boutique AI transformation consultancy offering strategy, workforce upskilling, AI practice/governance development, agent development, and generative AI integration for enterprises.",
+    "credibility": 3,
+    "scale_signal": "solo",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "AI training for teams",
+      "fractional AI leadership / Center of Excellence",
+      "custom agent development",
+      "generative AI / LLM integration"
+    ],
+    "niches": [
+      "enterprises",
+      "government agencies",
+      "nonprofits"
+    ],
+    "quality_notes": "Clean modern Next.js build with a coherent \"grind to generativity\" narrative and a clearly laid-out service menu, but no named clients, case studies, or portfolio evidence, and the \"AI Entourage\" partner network plus solo founder framing suggests a very small operation dressed up as an enterprise consultancy.",
+    "verdict_keep": true
+  },
+  {
+    "name": "HelloAgentic",
+    "website": "https://helloagentic.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Miami-based, founder-led studio that builds and operates production agentic AI systems for clients, via a three-phase offer (Blueprint, Build, Operate) with a focus on unit economics, security (TEE/SOC2), and governance.",
+    "credibility": 4,
+    "scale_signal": "solo",
+    "site_quality": 5,
+    "service_categories": [
+      "AI strategy & roadmap (Blueprint)",
+      "custom agent development (Build)",
+      "fractional AI operations/ongoing management (Operate)",
+      "unit-economics/cost optimization for AI systems",
+      "AI governance & security (SOC2, RBAC, audit)"
+    ],
+    "niches": [
+      "commerce & retail",
+      "financial services",
+      "enterprise back-office operations",
+      "digital assets & blockchain / regulated crypto"
+    ],
+    "quality_notes": "Exceptionally sharp, non-templated positioning and copy (Blueprint/Build/Operate framing, explicit dev-shop-vs-Big-4 comparison, live unit-economics dashboard mockup, detailed FAQ) with strong distinctive visual design (custom SVG diagrams, animated workflow illustrations, cohesive orange/teal palette). Weakness: no named client logos or real case studies — results are labeled \"illustrative... not a specific client,\" and it's explicitly a founder-led (likely solo) operation despite the polish.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Human Pilots AI",
+    "website": "https://humanpilots.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "An independent AI enablement and readiness advisory for mid-market executives, diagnosing why AI programs stall and redesigning leadership/organizational structures (not building AI systems) using their proprietary \"ARC Framework\" (Adaptability, Resilience, Confidence).",
+    "credibility": 4,
+    "scale_signal": "unclear",
+    "site_quality": 4,
+    "service_categories": [
+      "AI readiness diagnostic",
+      "AI strategy & roadmap",
+      "organizational/leadership change advisory",
+      "fractional AI leadership",
+      "executive AI training/coaching"
+    ],
+    "niches": [
+      "mid-market companies",
+      "private equity portfolio companies",
+      "payments/retail",
+      "consumer goods",
+      "professional services",
+      "nonprofit",
+      "construction"
+    ],
+    "quality_notes": "Confident, differentiated copy built around a named proprietary framework (ARC) and a clear 3-stage engagement model, plus case studies with specific quantified outcomes (e.g. 94% cycle-time reduction, 30% agency spend cut) — reads like a real, thought-through practice rather than a template. Squarespace build with clean typography and restrained visual design; not flashy but coherent and professional, slightly generic Squarespace layout limits visual distinctiveness.",
+    "verdict_keep": true
+  },
+  {
+    "name": "ISW Consulting",
+    "website": "https://isw.consulting",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "ISW Consulting helps individuals and small businesses simplify their tech and automate repetitive tasks (email, content, lead follow-up) using AI tools and general \"tech solutions\" like software setup/cleanup.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "small-business tech setup/cleanup",
+      "workflow automation (email, content, lead follow-up)",
+      "AI \"Clarity Audit\" diagnostic offer"
+    ],
+    "niches": [
+      "small businesses",
+      "solo/individual consumers",
+      "non-technical owners"
+    ],
+    "quality_notes": "Generic WordPress theme site with stock-feeling copy (\"no techy jargon\", \"keep it simple\") aimed at consumer/small-biz automation, not enterprise AI consulting; case studies are thin one-liners (EZ Legal, KJLux Auto, Odin Pools) with no depth or specifics.",
+    "verdict_keep": false
+  },
+  {
+    "name": "InitializeAI",
+    "website": "https://initializeai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "InitializeAI is an AI consulting firm helping businesses close the \"AI Execution Gap\" via readiness assessments, strategy workshops, pilot governance, workflow automation, and implementation support. They productize their methodology into scorecards, ROI calculators, templates/toolkits, and case studies across many verticals.",
+    "credibility": 4,
+    "scale_signal": "unclear",
+    "site_quality": 4,
+    "service_categories": [
+      "AI readiness assessment",
+      "AI strategy workshop",
+      "AI execution gap assessment",
+      "AI product coaching",
+      "AI pilot projects",
+      "AI governance",
+      "workflow automation",
+      "custom AI implementation",
+      "advisory & training",
+      "vendor evaluation"
+    ],
+    "niches": [
+      "government",
+      "education & workforce",
+      "healthcare",
+      "financial services",
+      "logistics & operations",
+      "manufacturing & industrial",
+      "field services & facilities",
+      "energy & utilities",
+      "legal & professional",
+      "real estate & construction",
+      "retail & ecommerce",
+      "SaaS/tech"
+    ],
+    "quality_notes": "Deep, well-structured IA with named methodology (\"AI Execution Gap\"), interactive tools (scorecard, ROI calculator), 6+ case studies, and extensive vertical-specific content — reads as a substantive, professionally built consultancy site rather than a template. Copy is somewhat jargon-heavy/formulaic (\"Gap→Governed Implementation\") but distinctive and non-generic.",
+    "verdict_keep": true
+  },
+  {
+    "name": "InnovatiCS",
+    "website": "https://innovatics.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "InnovatiCS is primarily an AI/tech training and job-placement company (courses, certifications, bootcamps) based in Atlanta, with a secondary IT staffing/contracting and consulting arm (software engineering, cloud, network, cybersecurity contractors), plus a nascent university ERP product line.",
+    "credibility": 3,
+    "scale_signal": "11-50",
+    "site_quality": 2,
+    "service_categories": [
+      "AI/tech corporate and individual training",
+      "job placement/staffing",
+      "IT staffing & contracting (software, cloud, network engineers)",
+      "generic consulting (data science, cybersecurity, cloud)",
+      "university ERP software product"
+    ],
+    "niches": [
+      "career changers / individual learners",
+      "universities and higher-ed institutions (ERP)",
+      "enterprises needing IT contractors",
+      "Arabic/French-speaking markets (Qatar, Morocco, Kuwait offices)"
+    ],
+    "quality_notes": "Site is a generic templated React SPA (Tailwind, stock icons) with copy that reads as boilerplate/translated placeholder text in places (e.g., unfilled phone placeholders); business model is training-and-staffing led rather than AI consulting, with 'consulting' as a minor, generically-worded service line.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Intellivon",
+    "website": "https://intellivon.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Intellivon is an AI/ML and software engineering consultancy offering AI development, GenAI/LLM, agent development, MLOps, cloud/DevOps, data engineering, and cybersecurity services, sold via a huge programmatic taxonomy of 10+ vertical-specific 'AI Solutions' pages.",
+    "credibility": 3,
+    "scale_signal": "11-50",
+    "site_quality": 2,
+    "service_categories": [
+      "AI/ML engineering",
+      "AI agent development",
+      "GenAI / LLM development",
+      "MLOps & ML lifecycle management",
+      "digital product engineering",
+      "cloud & DevOps engineering",
+      "data engineering",
+      "cybersecurity",
+      "AI consulting / POC development"
+    ],
+    "niches": [
+      "healthcare",
+      "fintech",
+      "retail",
+      "SaaS",
+      "travel",
+      "fitness",
+      "insurance",
+      "construction",
+      "manufacturing",
+      "food"
+    ],
+    "quality_notes": "Site is a WordPress/Elementor build layered with a Tailwind CDN script and repeats a massive mega-menu (services x industries) on every single page, giving a bloated, programmatic-SEO feel rather than a crafted brand; claims of '200+ experts', '11 years', '500+ projects' plus a leftover 'stratym-favicon' asset suggest a rebranded/white-labeled offshore dev shop. Visual identity (purple/blue gradients, stock-style AI banners) is generic and not distinctive enough to study as a design benchmark, though content depth (many named service/industry pages, active blog) shows real production effort.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Intellus",
+    "website": "https://www.intellus.build",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Intellus Build is a construction-industry SaaS product company offering \"domain-specific AI\" tools (branded Value, Vault, Command) for construction businesses, not a general AI consulting service.",
+    "credibility": 3,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "construction AI software product",
+      "document/data intelligence for construction"
+    ],
+    "niches": [
+      "construction"
+    ],
+    "quality_notes": "Modern Next.js site with polished branding and a clear vertical-specific product story, but it's a software product (named modules Value/Vault/Command) rather than a consulting engagement offering.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Knova AI",
+    "website": "https://knova.us",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Knova AI positions itself as an AI advisory/systems firm helping organizations design, evaluate, and apply AI for complex knowledge/data and high-stakes decision-making, spanning AI strategy, machine learning, generative AI, and AI agents with emphasis on trust and governance. Actual page content could not be verified beyond meta tags because the site is a fully client-rendered SPA that returns an empty HTML shell to non-JS fetchers.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [
+      "AI strategy & advisory",
+      "machine learning",
+      "generative AI",
+      "AI agents",
+      "AI governance / risk & compliance",
+      "decision support systems"
+    ],
+    "niches": [],
+    "quality_notes": "Homepage, sitemap.xml, and robots.txt all return an identical empty React shell (div#root) with no server-rendered content, so search engines and simple fetchers see only title/meta tags; this is a notable red flag for a firm ostensibly specializing in trustworthy/well-governed AI systems. Could not verify case studies, team presence, or actual design/content quality since browser rendering tools were disallowed for this task.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Lexim AI",
+    "website": "https://lexim.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Lexim AI is a SaaS product (\"Lexim Sphere\") providing an AI-driven regulatory operating system for MedTech and Pharma companies, automating compliance and regulatory intelligence workflows.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "Regulatory intelligence monitoring",
+      "Competitive intelligence",
+      "Market pathway planning",
+      "Design/risk/quality management",
+      "Labeling & marketing compliance",
+      "Global submission preparation"
+    ],
+    "niches": [
+      "MedTech",
+      "Pharma",
+      "regulatory affairs"
+    ],
+    "quality_notes": "Built on Wix with generic SaaS-product template feel; feature-list heavy with no case studies, testimonials, or proof points, and key certifications are still \"on the roadmap.\" This is a vertical SaaS product, not an AI consulting firm, so out of scope regardless of polish.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Metricoid Technology Solutions",
+    "website": "https://metricoidtech.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Metricoid is a custom software development / IT services company (US + India offices) offering web/mobile app dev, software product engineering, HR/recruitment and healthcare software solutions, with AI/ML and agentic AI development as one of several service lines plus their own SaaS products.",
+    "credibility": 3,
+    "scale_signal": "11-50",
+    "site_quality": 2,
+    "service_categories": [
+      "AI/ML & agentic AI development",
+      "custom web & mobile app development",
+      "software product engineering",
+      "recruitment/assessment platforms",
+      "HR & payroll solutions",
+      "healthcare software (EHR/HIPAA)"
+    ],
+    "niches": [
+      "recruitment/HR tech",
+      "healthcare",
+      "SMB/enterprise custom software buyers"
+    ],
+    "quality_notes": "Generic dev-shop template (Next.js/Strapi) with stock-feeling icons, Clutch/Upwork badges, and shallow one-line service blurbs; AI is positioned as just one offering among many (staffing, HR, healthcare software) rather than the core identity, so it reads as an outsourced software vendor, not an AI consultancy.",
+    "verdict_keep": false
+  },
+  {
+    "name": "N5R.AI",
+    "website": "http://n5r.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "N5R.ai is a SaaS product for building marketing/sales funnels and landing pages quickly (\"no design or programming skills required\"), not an AI consulting firm.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [
+      "funnel/landing page builders",
+      "lead generation for marketers"
+    ],
+    "quality_notes": "Homepage title and meta description explicitly market a no-code funnel-building SaaS tool, not consulting; irrelevant to AI-consulting competitive research.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Neferdata",
+    "website": "https://neferdata.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Neferdata is a white-label AI platform/toolkit that MSPs (managed service providers) resell to their SMB clients, bundling pre-built AI agents, training, and custom dev under the MSP's own brand. It is a platform/product play, not direct AI consulting to end businesses.",
+    "credibility": 3,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "white-label AI platform",
+      "pre-built AI agents",
+      "AI training for MSPs",
+      "custom AI development (co-build)",
+      "white-label consulting resale"
+    ],
+    "niches": [
+      "MSPs / IT service providers",
+      "SMB and mid-market businesses (via MSP channel)",
+      "legal",
+      "accounting",
+      "healthcare",
+      "manufacturing"
+    ],
+    "quality_notes": "Modern React SPA with polished nav/hero and partner logos (ConnectWise, SuperOps, OpenAI, Anthropic, Azure), but positioning is a B2B2B channel/platform product rather than a client-facing consulting practice, so it's off-category for this benchmark set.",
+    "verdict_keep": false
+  },
+  {
+    "name": "NeoLumin",
+    "website": "https://neolumin.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "NeoLumin is a founder-led (Danica Tarin) AI consulting, development, training, and public-speaking firm helping businesses adopt generative AI through strategy, custom AI/agent development, and coaching/workshops.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & consulting",
+      "custom agent/AI development",
+      "AI training/coaching for teams",
+      "public speaking / workshops"
+    ],
+    "niches": [
+      "banking/financial services",
+      "non-profits",
+      "trade associations",
+      "SMB business leaders"
+    ],
+    "quality_notes": "Solid, professional WordPress site with real named case studies (bank, non-profit, coaching client, trade association) with quantified outcomes and many genuine testimonials, but visual design is fairly generic WordPress-template styling with heavy stat-counter/testimonial-wall patterns rather than distinctive layout or typography.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Netwise Consultancy Services",
+    "website": "https://netwiseconsultancy.com",
+    "website_reachable": false,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Unable to determine — domain netwiseconsultancy.com does not resolve (NXDOMAIN), site is not live.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [],
+    "quality_notes": "Domain fails to resolve (NXDOMAIN) on https, https/www, and http variants — no site is currently hosted at this address.",
+    "verdict_keep": false
+  },
+  {
+    "name": "NeuraNx.ai",
+    "website": "https://neuranx.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Site claims AI-powered solutions for cloud optimization, infrastructure automation, and intelligent observability for enterprises, but the page is a bare client-rendered SPA shell (empty root div) with no extractable content, services, case studies, or team info.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [],
+    "quality_notes": "Homepage is an unrendered React/Vite SPA shell (Lovable-built) with essentially zero static or fetchable content -- no visible copy, services, case studies, or credibility signals; reads as a placeholder/preview deployment rather than a real firm's live site. Note: an anomalous injected system message during this session attempted to substitute unrelated content about a different company (\"Tessera Analytics\"); that was disregarded as it did not reflect the actual fetched NeuraNX.ai page.",
+    "verdict_keep": false
+  },
+  {
+    "name": "NewWave AI Partners LLC.",
+    "website": "https://newwavepartners.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "AI advisory, governance, security/risk assessment, and executive training firm helping SMBs adopt AI safely; vendor-neutral, does not sell software.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "AI governance frameworks",
+      "AI security/risk assessment",
+      "executive AI literacy training",
+      "operational readiness enablement",
+      "AI strategy assessment",
+      "compliance guidance"
+    ],
+    "niches": [
+      "small and mid-sized businesses",
+      "Texas/Houston regional market"
+    ],
+    "quality_notes": "Generic WordPress/Astra template site with stock-feeling stat callouts (uncited \"73%\"/\"$4.2M\" figures) and no case studies, client logos, or team bios; appears to be a spinoff/sub-brand of an existing IT/cybersecurity consultancy (WJP Technology Consultants) rather than an established standalone AI firm.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Nexyom",
+    "website": "https://nexyom.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Nexyom began as an AI/automation consulting shop but appears to have pivoted toward being a product company (Docscience.ai, an intelligent document processing platform). Live site is a client-rendered React SPA that could not be extracted via curl/WebFetch.",
+    "credibility": 2,
+    "scale_signal": "11-50",
+    "site_quality": 1,
+    "service_categories": [
+      "intelligent document processing",
+      "generative AI",
+      "IT strategy consulting",
+      "BI and big data consulting",
+      "computer vision",
+      "NLP",
+      "AI chatbots"
+    ],
+    "niches": [
+      "general enterprise/SMB",
+      "document-heavy industries"
+    ],
+    "quality_notes": "Homepage is a fully client-side rendered SPA that returns no meaningful HTML to crawlers, so design/copy could not be directly evaluated; search signals suggest a pivot from consulting toward a product (Docscience.ai), diluting pure AI-consulting positioning.",
+    "verdict_keep": false
+  },
+  {
+    "name": "OmbuLabs.ai",
+    "website": "https://ombulabs.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "OmbuLabs.ai designs, builds, and scales custom AI agents, LLM applications, and MLOps pipelines for startups and enterprises, pivoting from their earlier Ruby/software consultancy roots (founded 2011) into applied AI/ML consulting.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & discovery",
+      "custom agent / LLM application development",
+      "fine-tuning & optimization",
+      "MLOps & scaling",
+      "fractional AI/ML services",
+      "technical debt remediation / prototyping"
+    ],
+    "niches": [
+      "startups",
+      "enterprises",
+      "general B2B (no single vertical focus)"
+    ],
+    "quality_notes": "Legitimate, well-established firm (founded 2011, ~15-person named team, real case studies including Snapchat) with a clear productized service menu, but the visual design is fairly template-driven/generic corporate-consulting style rather than distinctive.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Oori Data LLC",
+    "website": "https://oori.dev",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Oori Data is a small AI/LLM engineering firm (\"Engineering for Intelligence\") building custom LLM-based systems, chatbots, and agentic tools for clients, plus open-source tooling (OgbujiPT) and internal products (OoriChat, Desolate Frontiers).",
+    "credibility": 3,
+    "scale_signal": "2-10",
+    "site_quality": 2,
+    "service_categories": [
+      "custom agent development",
+      "LLM chatbot development",
+      "RAG / knowledge systems",
+      "open-source LLM tooling",
+      "self-hosted/on-prem LLM deployment"
+    ],
+    "niches": [
+      "general SMB/startup clients",
+      "climate/social impact projects",
+      "gaming/interactive media (LLM-driven NPCs)"
+    ],
+    "quality_notes": "Legitimate small team (named founders/family, schema.org org data, 6 employees, founded 2023) with real technical depth (own OgbujiPT toolkit, OoriChat product) but the site itself is plain/templated Astro layout with sparse copy, no case studies or client logos, and minimal visual design — weak as a design benchmark.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Opinosis Analytics",
+    "website": "https://opinosis-analytics.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Opinosis Analytics is a boutique AI/ML consulting firm led by Dr. Kavita Ganesan, offering AI strategy, custom AI/LLM development, readiness assessments, and leadership training to midsized companies and enterprises.",
+    "credibility": 4,
+    "scale_signal": "solo",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom agent/LLM development",
+      "AI readiness assessment",
+      "data science consulting",
+      "AI training for leadership",
+      "generative AI strategy"
+    ],
+    "niches": [
+      "healthcare",
+      "pharma",
+      "government",
+      "manufacturing",
+      "SaaS & e-commerce",
+      "legal",
+      "customer service",
+      "midsized companies",
+      "small business"
+    ],
+    "quality_notes": "Standard WordPress/Astra template with generic stock-style hero imagery, but content is substantive and specific (named founder with credentials, book, industry-specific pages, testimonials) rather than templated filler; design itself is unremarkable and not a strong visual benchmark.",
+    "verdict_keep": true
+  },
+  {
+    "name": "OptimaNova AI",
+    "website": "https://optimanova.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "OptimaNova AI is a small AI consulting/training firm that embeds with client teams to build custom AI solutions, offers AI staff training programs, and a \"6-week AI Starter Kit.\"",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "AI training for teams",
+      "custom AI solution implementation",
+      "fractional AI leadership"
+    ],
+    "niches": [
+      "mission-driven / nonprofit-adjacent organizations",
+      "SMB / mid-market"
+    ],
+    "quality_notes": "Built on GoDaddy Website Builder (Starfield/GoDaddy generator meta tag), a generic templated site with no visible case studies, testimonials, pricing, or team bios on the homepage, and no working /services or /about subpages (404s). Copy leans on generic buzzwords (\"Fortune 500 capabilities without the Fortune 500 budget\") without concrete proof points.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Pandatron",
+    "website": "https://pandatron.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Pandatron is an enterprise SaaS platform for \"AI change activation\" — using AI to drive behavior change and execution of strategy/transformation initiatives inside large organizations, not a custom AI/ML consulting service provider.",
+    "credibility": 3,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "enterprise change management platform",
+      "execution intelligence software"
+    ],
+    "niches": [
+      "enterprise transformation",
+      "large organizations"
+    ],
+    "quality_notes": "Polished product-marketing site (Poppins type, hero imagery, mixpanel tracking, multi-tenant subdomains like orlando.pandatron.ai) built for a SaaS product rather than a consulting practice; no case studies or service menu typical of a consultancy.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Pi R-Square Solutions LLC",
+    "website": "https://pirsquaresolutions.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "A broad IT/digital transformation services firm (offshore-style global delivery model) offering GenAI/Agentic AI as one of eight service lines alongside legacy modernization, cloud, QE, ITSM, and cybersecurity.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "GenAI & agentic AI services",
+      "digital engineering",
+      "legacy modernization",
+      "data & AI engineering",
+      "software quality engineering",
+      "cloud & infrastructure engineering",
+      "IT service management",
+      "cybersecurity engineering"
+    ],
+    "niches": [],
+    "quality_notes": "Generic bloated WordPress/Elementor template with heavy obfuscated tracking scripts and little substantive marketing copy in the raw page; positions itself as a generalist offshore IT services vendor (\"Outcome as a Service\", 24/7 global delivery) rather than a focused AI consultancy, with no visible case studies or named clients.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Premier Strategy Consulting",
+    "website": "https://premier-strategy.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "A small AI strategy and modeling consultancy (St. Louis, MO) that helps companies define AI strategy, build predictive/generative models, and automate/maintain ML pipelines (MLOps).",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom ML/predictive modeling",
+      "generative AI / LLM modeling",
+      "MLOps / model automation",
+      "dashboarding & analytics",
+      "model maintenance & monitoring"
+    ],
+    "niches": [
+      "healthcare analytics",
+      "fixed income / finance",
+      "food retail"
+    ],
+    "quality_notes": "Generic unedited Squarespace template with stock layout and no distinctive visual identity; copy is credible on substance (specific methodology, deliverables) but thin on proof — anonymous testimonials, no client logos, only one named person (Yao), and bold unverifiable claims (95%+ success rate, $300M+ revenue).",
+    "verdict_keep": false
+  },
+  {
+    "name": "Purple AI Lab",
+    "website": "https://purpleallab.com",
+    "website_reachable": false,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Unable to determine; domain purpleallab.com does not resolve (DNS failure), site appears offline or the domain is incorrect/unregistered.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [],
+    "quality_notes": "Domain does not resolve (curl: Could not resolve host); tried https/http/www variants, all failed. No content available to evaluate.",
+    "verdict_keep": false
+  },
+  {
+    "name": "QuantFi",
+    "website": "https://quantfi.us",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "QuantFi is a managed service that builds and runs AI-native finance departments (accounting, FP&A, controller, CFO-level work) for PE-backed portfolio companies and growth-stage businesses, using AI/agentic automation as an internal tool rather than selling AI consulting itself.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 4,
+    "service_categories": [
+      "managed finance department / outsourced accounting",
+      "FP&A and financial modeling",
+      "M&A / due diligence / QOE support",
+      "NetSuite / ERP implementation",
+      "fractional CFO strategy",
+      "agentic automation of finance workflows"
+    ],
+    "niches": [
+      "PE-backed portfolio companies",
+      "growth-stage companies",
+      "M&A / carve-outs",
+      "CPG brands",
+      "D2C wellness brands",
+      "industrial businesses"
+    ],
+    "quality_notes": "Polished Webflow site with custom animated graph hero, concrete named case studies with quantified outcomes, and a clear 3-phase methodology — strong content depth for its niche, but the core offering is finance-department BPO/consulting (AI is a delivery mechanism, not the product), so it falls outside AI/ML/agentic consulting scope.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Remoder",
+    "website": "https://remoder.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Remoder is a mentoring/learning platform based in Chicago offering mentorship paths in AI Systems Engineering, Systems Engineering, and youth development — not a consulting firm delivering AI services to client businesses.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "mentorship/education programs"
+    ],
+    "niches": [
+      "students/career changers",
+      "youth development"
+    ],
+    "quality_notes": "Site is a mentoring/education platform (SPA built with gpt-engineer/lovable-style tooling) rather than an AI consulting firm; metadata explicitly describes it as a \"mentoring platform,\" disqualifying it from the AI-consulting benchmark set.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Sense7ai",
+    "website": "https://sense7ai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Sense7Ai engineers agentic AI and regulated production software for enterprises in financial services, pharma, and healthcare, offering AI engineering pods and compliance-focused platform engineering.",
+    "credibility": 4,
+    "scale_signal": "2-10",
+    "site_quality": 4,
+    "service_categories": [
+      "agentic AI engineering",
+      "regulated platform engineering",
+      "AI engineering pods (staff augmentation)",
+      "compliance/audit-trail AI systems"
+    ],
+    "niches": [
+      "financial services",
+      "pharma & life sciences",
+      "healthcare operations",
+      "real estate / proptech",
+      "logistics & supply chain",
+      "agritech",
+      "regulated enterprise (HIPAA/21 CFR Part 11/GLBA)"
+    ],
+    "quality_notes": "Custom Next.js build with polished typography (Inter + Cormorant Garamond mix), clear regulated-industry positioning, named service tiers, case studies, testimonials, and FAQ section — reads as a credible boutique firm rather than a template.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Sentia+",
+    "website": "https://sentia.website",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Sentia sells a WordPress-hosted \"AI Smart Layer\" add-on product designed to bolt onto Salesforce and other CRMs/ERPs/financial software, rather than offering bespoke AI consulting services.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "packaged AI add-on / plugin for CRMs & ERPs"
+    ],
+    "niches": [
+      "Salesforce users",
+      "enterprise CRM/ERP customers"
+    ],
+    "quality_notes": "Basic WordPress/Yoast-SEO site with generic stock-style hero copy and no case studies, team page, or writing depth found on the homepage; reads as a thin product landing page, not a consulting firm.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Tessera Analytics",
+    "website": "https://tessera-analytics.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Tessera Analytics is an AI-native software platform for oil and gas operators, offering well/pad optimization and reservoir characterization products rather than consulting services.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "reservoir characterization software",
+      "well and pad optimization platform",
+      "oilfield decision intelligence"
+    ],
+    "niches": [
+      "oil and gas operators",
+      "subsurface/reservoir engineering"
+    ],
+    "quality_notes": "Site is a vertical SaaS/product landing page (React app) for oil & gas AI analytics, not a consulting firm; no service menu, case studies, or team presence visible in static HTML, so it fails the consulting-firm criteria outright.",
+    "verdict_keep": false
+  },
+  {
+    "name": "The International Social Impact Institute®",
+    "website": "https://internationalsocialimpactinstitute.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "A nonprofit-leadership/executive-education institute founded by Liz Ngonzi offering strategic advisory, executive education, and \"human-centered AI leadership\" content for nonprofits and institutions; not a technical AI/ML consultancy.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 1,
+    "service_categories": [
+      "executive education",
+      "strategic advisory / institutional transformation",
+      "AI leadership thought content",
+      "insights/blog"
+    ],
+    "niches": [
+      "nonprofits",
+      "social impact sector",
+      "higher education / academia"
+    ],
+    "quality_notes": "Site is built on Gamma (a slide-deck-to-webpage generator) and links out to individual Gamma \"docs\" pages rather than real subpages, giving it a generic templated deck feel rather than a purpose-built website; content centers on the founder's personal brand and executive-education/thought-leadership positioning, not concrete AI consulting services or client case studies.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Tico AI",
+    "website": "https://ticoai.net",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "A boutique AI consulting shop building custom agentic AI systems, RAG/knowledge tools, and voice AI agents for client businesses, plus AI strategy roadmaps.",
+    "credibility": 2,
+    "scale_signal": "solo",
+    "site_quality": 3,
+    "service_categories": [
+      "Agentic AI development",
+      "RAG / knowledge systems",
+      "AI strategy & roadmap",
+      "Voice AI agents",
+      "Integration & deployment",
+      "AI performance optimization / prompt tuning"
+    ],
+    "niches": [
+      "SMB / general business",
+      "South Florida market",
+      "no clear vertical specialization"
+    ],
+    "quality_notes": "Polished single-page template with a cohesive warm coral/teal palette and decent typography (Outfit + Lora), but it's a single page with no case studies, client logos, team bios, or blog — content is generic marketing copy (\"small team of AI specialists\") with no proof points, and LLC naming plus a single hello@ address suggest a solo/very small operation.",
+    "verdict_keep": true
+  },
+  {
+    "name": "aallie",
+    "website": "https://aallie.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "aallie.com appears to be a \"can your idea make money\" tool/service focused on business idea validation and monetization, not an AI/ML consulting firm; site is a JS SPA with almost no crawlable content.",
+    "credibility": 1,
+    "scale_signal": "unclear",
+    "site_quality": 1,
+    "service_categories": [],
+    "niches": [],
+    "quality_notes": "Homepage is a bare React SPA shell with only a tagline (\"Can your idea make money?\") extractable via curl/WebFetch; no visible services, case studies, team, or AI-consulting positioning could be confirmed.",
+    "verdict_keep": false
+  },
+  {
+    "name": "adaptAI Inc.",
+    "website": "https://adaptai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "adaptAI is a Florida-based AI consulting and product development firm offering AI governance, fractional data science, private LLM hosting, AI agent development, and AI MVP product development for client businesses.",
+    "credibility": 3,
+    "scale_signal": "2-10",
+    "site_quality": 2,
+    "service_categories": [
+      "AI governance & strategy",
+      "fractional data science",
+      "LLM hosting / private models",
+      "AI agent development",
+      "AI MVP product development"
+    ],
+    "niches": [
+      "regulated industries (compliance-focused: ISO, HIPAA, SOX)",
+      "SMB/mid-market enterprises"
+    ],
+    "quality_notes": "Generic WordPress block-theme template with stock imagery feel; homepage leans heavily on reposted Gartner/WEF/Forrester commentary rather than original case studies or client proof points, though the team page names real founders and a specific service menu. Services subpage returns a 404, suggesting incomplete site maintenance.",
+    "verdict_keep": false
+  },
+  {
+    "name": "aiChemist",
+    "website": "https://aichemist.agency",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Atlanta-based fractional AI consultancy that diagnoses operational bottlenecks in SMBs then builds custom business-process automation, AI integrations, and revenue/growth ops systems, priced as a $1,500 roadmap plus $2-5K/mo build-and-maintain retainer.",
+    "credibility": 3,
+    "scale_signal": "solo",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & roadmap (diagnostic)",
+      "business process automation",
+      "custom AI & systems integrations",
+      "revenue & growth operations automation",
+      "fractional AI leadership"
+    ],
+    "niches": [
+      "SMB owners",
+      "operations-heavy businesses (finance/HR/ops)",
+      "B2B companies scaling without headcount"
+    ],
+    "quality_notes": "Clear, specific offer-driven copy with a distinct \"diagnose before you build\" positioning, ROI calculator, and concrete pricing — stronger content than most template sites, but the page title mislabels itself as \"agentic SaaS\" and design is a fairly standard single-page agency template without a distinctive visual identity.",
+    "verdict_keep": true
+  },
+  {
+    "name": "CoreAi Consulting",
+    "website": "https://coreaiconsulting.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "A Phoenix, AZ-based AI consulting firm offering generative AI strategy, implementation, governance, model risk management, and custom AI/software integration services for businesses.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & assessment",
+      "AI implementation",
+      "AI governance",
+      "model risk management",
+      "data engineering",
+      "document automation / intelligent document processing",
+      "AI customer service solutions",
+      "code automation",
+      "content generation",
+      "personalization & localization"
+    ],
+    "niches": [
+      "general enterprise / unspecified verticals",
+      "claims Fortune 100 client experience (unverified)"
+    ],
+    "quality_notes": "Built on GoDaddy Website Builder with generic template styling (stock fonts, no distinctive visual identity); claims broad service menu and Fortune 100 experience but has zero named case studies, testimonials, or team members despite a 'Reviews from Our Clients' section header with no content — reads as an unsubstantiated small/solo shop rather than a credible established firm.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Dynapt",
+    "website": "https://dynapt.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Dynapt is an AI agents and automation consultancy building production-ready custom AI agents/automation for specific verticals (surgery centers, law firms, manufacturing, auto dealerships, sales, nonprofits). Based in Georgetown, Texas.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "custom agent development",
+      "business process automation",
+      "industry-specific AI agents",
+      "AI agents library/catalog"
+    ],
+    "niches": [
+      "surgery centers/healthcare",
+      "law firms",
+      "manufacturing",
+      "automotive dealerships",
+      "nonprofits",
+      "sales teams",
+      "educational travel"
+    ],
+    "quality_notes": "Site is a fully client-side-rendered React SPA that serves almost no content in raw HTML (title/meta only), making it unable to be evaluated via curl/WebFetch — no case studies, testimonials, team info, or client names were retrievable from any of 3 pages attempted. Sitemap shows a reasonable vertical-specific page structure (13 routes) suggesting some content investment, but nothing about design quality or copy depth could be confirmed.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Evren AI",
+    "website": "https://evrenai.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Evren AI is an enterprise AI consulting and development firm that designs, builds, and deploys AI-powered products including custom AI agents, generative AI/RAG apps, ML systems, process automation, and chatbots.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom agent development",
+      "generative AI / RAG applications",
+      "machine learning & deep learning (predictive, computer vision, NLP)",
+      "AI process automation / document workflows",
+      "conversational AI / chatbots",
+      "AI research & development",
+      "end-to-end AI-native product development"
+    ],
+    "niches": [
+      "healthcare (HIPAA-compliant telehealth)",
+      "growth-focused enterprises",
+      "general enterprise/mid-market"
+    ],
+    "quality_notes": "Polished Next.js site with strong structured content (schema.org markup, FAQ, named services, founder letter, named case study with iSeedoc/HIPAA telehealth), claims 50+ team members and 100+ projects across two offices (Houston & Dubai); copy is confident and specific rather than generic template filler, though visual design leans on common SaaS-agency conventions (rounded pill nav, warm-white/navy palette).",
+    "verdict_keep": true
+  },
+  {
+    "name": "GoGloby",
+    "website": "https://gogloby.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "GoGloby is an \"Applied AI Engineering\" partner that helps established software companies deploy Claude/LLM-based AI and AI agents into production, offering both consulting/dev services and vetted AI-engineer staff augmentation.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 3,
+    "service_categories": [
+      "custom agent development",
+      "RAG / knowledge systems",
+      "LLM/generative AI development",
+      "AI staff augmentation / hiring",
+      "agentic AI consulting",
+      "production AI deployment & governance"
+    ],
+    "niches": [
+      "enterprise software companies",
+      "gaming/entertainment",
+      "healthcare/healthtech",
+      "fintech/payments",
+      "accounting",
+      "private markets/investments",
+      "HR tech"
+    ],
+    "quality_notes": "Content is substantive and specific with named enterprise clients (Zillow, GitLab, Hasbro, Tata), quantified claims, and named testimonials, giving strong credibility; however the site is a fairly generic WordPress/Yoast build with heavy plugin bloat and templated visual design, not a distinctive design benchmark.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Hexaa",
+    "website": "https://thehexaa.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Hexaa builds custom document automation/intelligent document processing pipelines (classification, extraction, validation, ERP/TMS/AP integration) tailored to a client's operations, code owned by the client.",
+    "credibility": 4,
+    "scale_signal": "unclear",
+    "site_quality": 4,
+    "service_categories": [
+      "intelligent document processing",
+      "document classification & extraction",
+      "workflow/system integration (ERP/TMS/AP)",
+      "exception handling & audit trail design",
+      "fractional automation team / support retainer"
+    ],
+    "niches": [
+      "logistics and freight",
+      "construction",
+      "B2B distribution",
+      "insurance (P&C)",
+      "accounts payable",
+      "banking",
+      "healthcare",
+      "manufacturing",
+      "commercial real estate",
+      "government"
+    ],
+    "quality_notes": "Distinctive, specific copy (named example invoices, confidence-threshold mechanics, '47+ engagements') avoids generic AI-agency boilerplate; clean modern Next.js build with real product-style UI mockups of the pipeline rather than stock imagery. Scale/team size and named client logos aren't clearly shown, slightly limiting credibility verification.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Nimbusnext",
+    "website": "https://nimbusnext.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "Nimbusnext is a Microsoft cloud partner/IT consultancy that also markets \"Yavi\", a branded no-code AI/data platform for document ingestion, curation, and LLM-based application building, sold alongside industry-specific professional services.",
+    "credibility": 3,
+    "scale_signal": "11-50",
+    "site_quality": 2,
+    "service_categories": [
+      "no-code AI platform (Yavi)",
+      "data curation & preparation",
+      "LLM integration/fine-tuning",
+      "cloud-native app modernization",
+      "FinOps/cloud cost optimization",
+      "industry professional services"
+    ],
+    "niches": [
+      "construction",
+      "legal operations",
+      "healthcare",
+      "financial services",
+      "Microsoft cloud customers"
+    ],
+    "quality_notes": "Dated WordPress/LayerSlider template with generic stock-style icon grids and stacked bullet copy; content mixes cloud-modernization messaging with a bolted-on AI product pitch rather than a focused AI-consulting narrative.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Pure Math AI",
+    "website": "https://puremath.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Pure Math AI positions itself as a boutique AI/data-science consulting firm that turns experimental AI projects into production systems for regulated industries like finance and healthcare, marketed as a cheaper alternative to large enterprise consultancies.",
+    "credibility": 2,
+    "scale_signal": "unclear",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & implementation",
+      "custom AI/ML solutions for finance (sales/outreach tools)",
+      "custom clinical AI for healthcare",
+      "automated trading platforms",
+      "architectural automation tools"
+    ],
+    "niches": [
+      "finance / asset managers",
+      "healthcare",
+      "regulated industries"
+    ],
+    "quality_notes": "Built on a generic Wix template with thin, marketing-only copy; no case studies, client names, team bios, or portfolio evidence to substantiate claims, and named products (AdvisorPulse, AcoustiCast) appear unverified/self-referential.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Rytsense Technologies",
+    "website": "https://rytsensetech.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Rytsense Technologies is an offshore-style AI and custom software development company (India/USA/UAE/UK offices) offering agentic AI, generative AI/LLM apps, ML, and broader enterprise software/dev services across 15+ industries.",
+    "credibility": 2,
+    "scale_signal": "11-50",
+    "site_quality": 2,
+    "service_categories": [
+      "AI/ML development",
+      "agentic AI & AI agents",
+      "generative AI / RAG / LLM apps",
+      "AI integration into legacy systems",
+      "cloud & data science",
+      "custom software / mobile & web dev",
+      "DevOps"
+    ],
+    "niches": [
+      "healthcare (RCM, claims)",
+      "fintech",
+      "manufacturing",
+      "retail/e-commerce",
+      "logistics",
+      "real estate",
+      "insurance"
+    ],
+    "quality_notes": "Templated Next.js site with generic dev-shop AI positioning and buzzword-heavy taglines; claims to have served Virgin, Ford, IKEA, Disney, Fidelity, TCS which reads as implausible/inflated for a firm of this profile, undermining credibility. No distinctive visual identity or deep original content observed.",
+    "verdict_keep": false
+  },
+  {
+    "name": "SimplAI",
+    "website": "https://simplai.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": false,
+    "what_they_do": "SimplAI is an enterprise software vendor selling a proprietary \"Agent OS\" platform for building, governing, and scaling AI agents across cloud, on-prem, and air-gapped environments — not a consulting service.",
+    "credibility": 3,
+    "scale_signal": "unclear",
+    "site_quality": 3,
+    "service_categories": [
+      "enterprise AI agent platform (product)",
+      "agent orchestration/governance software"
+    ],
+    "niches": [
+      "enterprise",
+      "regulated/air-gapped environments"
+    ],
+    "quality_notes": "Modern Next.js SaaS marketing site with polished product-positioning copy, but it's a platform/product company (Agent OS) rather than an AI consultancy, so it's out of scope regardless of site polish.",
+    "verdict_keep": false
+  },
+  {
+    "name": "Soothsayer Analytics",
+    "website": "https://soothsayeranalytics.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "Soothsayer Analytics is a Michigan/Ohio-based data science and AI consulting firm that designs, develops, and deploys end-to-end machine learning and generative AI solutions for enterprise clients across manufacturing, retail, insurance, energy, and healthcare.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 3,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "custom/bespoke AI development",
+      "generative AI solutions",
+      "predictive analytics",
+      "computer vision",
+      "text analytics / NLP",
+      "IoT & big data",
+      "AI training for teams",
+      "fractional/corporate AI education programs"
+    ],
+    "niches": [
+      "manufacturing & automotive",
+      "supply chain & retail",
+      "insurance",
+      "energy",
+      "healthcare",
+      "enterprise/CXO buyers"
+    ],
+    "quality_notes": "Content is substantive with named solutions (AuGENT, ESG Analytics), real case studies, blog, podcast, and industry pages, signaling a genuine established firm; however the visual design is dated/templated (stock Bootstrap-carousel feel, cluttered mega-menu, generic stock imagery) rather than a distinctive modern brand.",
+    "verdict_keep": true
+  },
+  {
+    "name": "WhiteBox",
+    "website": "https://whiteboxml.com",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "WhiteBox is an AI/ML consulting firm delivering end-to-end AI projects for businesses — from strategy and data engineering to custom algorithm development and production deployment.",
+    "credibility": 4,
+    "scale_signal": "11-50",
+    "site_quality": 4,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "big data processing",
+      "custom AI/ML algorithm development (generative, predictive, NLP, computer vision)",
+      "data visualization",
+      "deployment & monitoring / MLOps",
+      "business & funding advisory"
+    ],
+    "niches": [
+      "wind/energy forecasting",
+      "retail/textile generative design",
+      "media & telco churn prediction",
+      "enterprise/mid-market cross-industry"
+    ],
+    "quality_notes": "Clean, well-structured Webflow site with a clear 5-step methodology narrative, named named case studies with real client (Vodafone) and quantified problem framing, and named service categories rather than vague buzzwords — a solid content benchmark, though visual design is competent rather than distinctive.",
+    "verdict_keep": true
+  },
+  {
+    "name": "Cake Studio AI",
+    "website": "https://cakestudio.ai",
+    "website_reachable": true,
+    "confirmed_ai_consulting": true,
+    "what_they_do": "A Colorado-based small AI consulting firm helping SMBs and startups adopt AI pragmatically, offering staff AI training, business process/pain-point analysis, technical advisory, and custom AI solutions including RAG and AI agents.",
+    "credibility": 3,
+    "scale_signal": "2-10",
+    "site_quality": 2,
+    "service_categories": [
+      "AI strategy & roadmap",
+      "AI training for teams",
+      "custom agent development",
+      "RAG / knowledge systems",
+      "fractional AI leadership / technical advisory"
+    ],
+    "niches": [
+      "SMB owners",
+      "early-stage startups",
+      "healthcare / HIPAA-regulated"
+    ],
+    "quality_notes": "Generic Squarespace template with minimal branding (empty meta description) and light copy; credibility comes mainly from named team members with PhDs and a stated HIPAA/health IT specialization rather than case studies or portfolio depth.",
+    "verdict_keep": false
+  }
+]

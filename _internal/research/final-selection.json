@@ -1,0 +1,346 @@
+{
+  "visualReports": [
+    {
+      "name": "FirmAdapt",
+      "website": "https://firmadapt.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/firmadapt-com.png"
+    },
+    {
+      "name": "HelloAgentic",
+      "website": "https://helloagentic.ai",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/helloagentic-ai.png"
+    },
+    {
+      "name": "Frontier Foundry",
+      "website": "https://frontierfoundry.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/frontierfoundry-com.png"
+    },
+    {
+      "name": "Anveshi.ai",
+      "website": "https://anveshi.ai",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/anveshi-ai.png"
+    },
+    {
+      "name": "Beige Bananas",
+      "website": "https://beigebananas.com/",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/beigebananas-com.png"
+    },
+    {
+      "name": "Cocoon AI",
+      "website": "https://cocoon-ai.com",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/cocoon-ai-com.png"
+    },
+    {
+      "name": "Enso Labs",
+      "website": "https://ensolabs.ai",
+      "loaded": true,
+      "visual_quality": 5,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/ensolabs-ai.png"
+    },
+    {
+      "name": "Fintechy",
+      "website": "https://fintechy.net",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/fintechy-net.png"
+    },
+    {
+      "name": "GenAI Protos",
+      "website": "https://genaiprotos.com",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/genaiprotos-com.png"
+    },
+    {
+      "name": "Grace & Cronos",
+      "website": "https://graceandcronos.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/graceandcronos-com.png"
+    },
+    {
+      "name": "Human Pilots AI",
+      "website": "https://humanpilots.ai",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/humanpilots-ai.png"
+    },
+    {
+      "name": "InitializeAI",
+      "website": "https://initializeai.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/initializeai-com.png"
+    },
+    {
+      "name": "Sense7ai",
+      "website": "https://sense7ai.com",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/sense7ai-com.png"
+    },
+    {
+      "name": "Evren AI",
+      "website": "https://evrenai.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/evrenai-com.png"
+    },
+    {
+      "name": "Hexaa",
+      "website": "https://thehexaa.ai",
+      "loaded": true,
+      "visual_quality": 5,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/thehexaa-ai.png"
+    },
+    {
+      "name": "WhiteBox",
+      "website": "https://whiteboxml.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/whiteboxml-com.png"
+    },
+    {
+      "name": "Execucom AI",
+      "website": "https://execucom.co",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/execucom-co.png"
+    },
+    {
+      "name": "BAY6.AI",
+      "website": "https://bay6.ai",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/bay6-ai.png"
+    },
+    {
+      "name": "Elucidate AI",
+      "website": "https://elucidate.ai",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/elucidate-ai.png"
+    },
+    {
+      "name": "NeoLumin",
+      "website": "https://neolumin.com",
+      "loaded": true,
+      "visual_quality": 2,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/neolumin-com.png"
+    },
+    {
+      "name": "OmbuLabs.ai",
+      "website": "https://ombulabs.ai",
+      "loaded": true,
+      "visual_quality": 2,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/ombulabs-ai.png"
+    },
+    {
+      "name": "Opinosis Analytics",
+      "website": "https://opinosis-analytics.com",
+      "loaded": true,
+      "visual_quality": 2,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/opinosis-analytics-com.png"
+    },
+    {
+      "name": "GoGloby",
+      "website": "https://gogloby.com",
+      "loaded": true,
+      "visual_quality": 4,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/gogloby-com.png"
+    },
+    {
+      "name": "Soothsayer Analytics",
+      "website": "https://soothsayeranalytics.com",
+      "loaded": true,
+      "visual_quality": 2,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/soothsayeranalytics-com.png"
+    },
+    {
+      "name": "4sight AI",
+      "website": "https://4sightai.com",
+      "loaded": true,
+      "visual_quality": 2,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/4sightai-com.png"
+    },
+    {
+      "name": "GreenData Ventures",
+      "website": "https://greendata.io",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/greendata-io.png"
+    },
+    {
+      "name": "aiChemist",
+      "website": "https://aichemist.agency",
+      "loaded": true,
+      "visual_quality": 3,
+      "screenshot": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/screenshots/aichemist-agency.png"
+    }
+  ],
+  "selected": [
+    {
+      "rank": 1,
+      "name": "Hexaa",
+      "website": "https://thehexaa.ai",
+      "reason": "Highest-craft editorial system in the set (serif-italic-in-sans, live invoice-UI hero mock, volume-slider ROI calculator) that reads as authored, not templated."
+    },
+    {
+      "rank": 2,
+      "name": "Enso Labs",
+      "website": "https://ensolabs.ai",
+      "reason": "Dark editorial art direction a studio would sign, with a live LangGraph terminal as proof-of-shipping and a 'no vanity metrics' proof-grid framing."
+    },
+    {
+      "rank": 3,
+      "name": "GoGloby",
+      "website": "https://gogloby.com",
+      "reason": "Best risk-reversal in the batch ($3M liability + 120-day guarantee) plus recognizable client logos and a sharp production-without-risk niche thesis."
+    },
+    {
+      "rank": 4,
+      "name": "Frontier Foundry",
+      "website": "https://frontierfoundry.com",
+      "reason": "Highest-credibility firm (real gov logos, ex-FDIC-CIO founder) that teaches category-owning framing ('three-part sovereignty test') and bespoke technical diagram art."
+    },
+    {
+      "rank": 5,
+      "name": "HelloAgentic",
+      "website": "https://helloagentic.ai",
+      "reason": "Master class in productized fixed-shape offers, contrarian thesis ('a demo is not a system'), and building trust via unit-economics transparency with zero client logos."
+    },
+    {
+      "rank": 6,
+      "name": "Grace & Cronos",
+      "website": "https://graceandcronos.com",
+      "reason": "Interaction-led content: clickable Leverage Map, named methodology, and a productized 30-day assessment with a week-by-week deliverable timeline."
+    },
+    {
+      "rank": 7,
+      "name": "InitializeAI",
+      "website": "https://initializeai.com",
+      "reason": "The definitive diagnostic-as-lead-magnet playbook: hero scorecard UI, free Gap Score, ROI calculator, and named downloadable toolkits per step."
+    },
+    {
+      "rank": 8,
+      "name": "Beige Bananas",
+      "website": "https://beigebananas.com/",
+      "reason": "Strongest brand personality in the set (rotating hero verb, LaTeX 'equation' graphic) and anonymized-but-specific testimonials that keep credibility without named clients."
+    },
+    {
+      "rank": 9,
+      "name": "Human Pilots AI",
+      "website": "https://humanpilots.ai",
+      "reason": "Best enablement/advisory positioning: verbatim board-anxiety pain cards, the ARC framework, and sticky reframes on a restrained Squarespace build."
+    },
+    {
+      "rank": 10,
+      "name": "FirmAdapt",
+      "website": "https://firmadapt.com",
+      "reason": "Most product-like top-of-funnel — a free type-your-domain 8-lens scan and a whole suite of free micro-tools driving the funnel, with a HUD/telemetry aesthetic."
+    },
+    {
+      "rank": 11,
+      "name": "WhiteBox",
+      "website": "https://whiteboxml.com",
+      "reason": "Model for logo-led trust (DoD/Vodafone/Carrefour) and demoing real work via an embedded live forecasting data-viz, in a high-craft minimal dark style."
+    },
+    {
+      "rank": 12,
+      "name": "Evren AI",
+      "website": "https://evrenai.com",
+      "reason": "Warm serif-on-peach palette that breaks the cold-navy AI-site default, plus an AEO-aware FAQ written for buyers and AI assistants."
+    },
+    {
+      "rank": 13,
+      "name": "Elucidate AI",
+      "website": "https://elucidate.ai",
+      "reason": "SLA-tied, dated, vertical-tagged case studies and a bespoke 3D data-mesh hero show how to make metrics read as real, not vanity."
+    },
+    {
+      "rank": 14,
+      "name": "aiChemist",
+      "website": "https://aichemist.agency",
+      "reason": "Closest peer to a small SMB shop: transparent fixed-price roadmap CTA, hero ROI calculator anchored to price, and a full trust-without-logos playbook."
+    },
+    {
+      "rank": 15,
+      "name": "Cocoon AI",
+      "website": "https://cocoon-ai.com",
+      "reason": "Excellent 'meet you where you are' diagnostic self-selector routing felt problems to named service tiers, plus honesty about when AI is the wrong call."
+    },
+    {
+      "rank": 16,
+      "name": "Anveshi.ai",
+      "website": "https://anveshi.ai",
+      "reason": "Sustained single-metaphor branding (Sherpa expedition), humanist counter-positioning, and per-vertical GEO hooks — plus a cautionary hero-contrast failure."
+    },
+    {
+      "rank": 17,
+      "name": "GreenData Ventures",
+      "website": "https://greendata.io",
+      "reason": "Teaches how a young firm borrows credibility: quantified industry proof-point carousel and an 'AI Entourage' partner network in place of client logos."
+    },
+    {
+      "rank": 18,
+      "name": "Execucom AI",
+      "website": "https://execucom.co",
+      "reason": "Sharp objection-handling FAQ (verbatim buyer fears) and motive-tuned audience-segment cards speaking to three buyers on one page."
+    },
+    {
+      "rank": 19,
+      "name": "GenAI Protos",
+      "website": "https://genaiprotos.com",
+      "reason": "Concrete-offering patterns: industry-tagged Solution cards as mini case studies and named productized accelerators framed as buyable IP."
+    },
+    {
+      "rank": 20,
+      "name": "Sense7ai",
+      "website": "https://sense7ai.com",
+      "reason": "Regulated-vertical positioning with radical-honesty trust copy ('certs earned, not claimed') and response-time SLAs stated in the CTA."
+    }
+  ],
+  "dropped": [
+    {
+      "name": "Fintechy",
+      "reason": "Polished but generic dark Next.js agency template with no distinctive typographic or color POV; its trust-bar and 7-day-assessment ideas are already better shown by higher-ranked picks."
+    },
+    {
+      "name": "BAY6.AI",
+      "reason": "Reads as a product/platform company on a default dark-mode AI-startup template with no case studies or metrics; positioning is off-axis and design isn't distinctive."
+    },
+    {
+      "name": "NeoLumin",
+      "reason": "Busy, template-driven WordPress/Elementor build (vq2) that visibly duplicates its hero block — a build error, not a benchmark; its case studies are its only asset and don't outweigh weak design."
+    },
+    {
+      "name": "OmbuLabs.ai",
+      "reason": "Legitimate firm with real clients (Snapchat) but a visually generic light agency template (vq2) whose lessons (personable About, open-source trust) are minor and covered elsewhere."
+    },
+    {
+      "name": "Opinosis Analytics",
+      "reason": "Substantive founder-led content but a formulaic blue-gradient WordPress template (vq2) with a mid-page rendering gap; unremarkable as a design or content benchmark."
+    },
+    {
+      "name": "Soothsayer Analytics",
+      "reason": "Credible established firm but dated, stock-heavy 'AI-slop' imagery and cluttered mega-menu (vq2); its quantified-outcome band is better demonstrated by GoGloby/WhiteBox."
+    },
+    {
+      "name": "4sight AI",
+      "reason": "Generic AI-slop hero (stock robot, spinning buzzword wheel) collapsing into text walls (vq2); nothing to learn except what to avoid."
+    }
+  ],
+  "dossier": "/Users/ali/workspace/kentro-lab/kentro-lab.github.io/research/dossier.md"
+}
