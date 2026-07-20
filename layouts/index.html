@@ -1,0 +1,139 @@
+{{ define "main" }}
+{{ $cta := .Site.Params.discovery_call_url }}
+<main>
+    <!-- Hero -->
+    <div class="bg-gray-200 dark:bg-gray-900">
+        <div class="px-4 py-16 mx-auto max-w-screen-xl lg:py-24">
+            <div class="mx-auto max-w-4xl text-center">
+                <p class="mb-4 text-sm font-semibold tracking-wide text-primary-600 uppercase dark:text-primary-300">
+                    {{ .Site.Params.hero.eyebrow }}
+                </p>
+                <h1 class="mb-6 text-4xl font-extrabold tracking-tight leading-tight text-gray-900 md:text-5xl xl:text-6xl dark:text-white">
+                    {{ .Site.Params.hero.heading_lead }}<span class="text-primary-600 dark:text-primary-400">{{ .Site.Params.hero.heading_highlight }}</span>
+                </h1>
+                <p class="mx-auto mb-8 max-w-2xl text-lg font-normal text-gray-700 md:text-xl dark:text-gray-200">
+                    {{ .Site.Params.Description }}
+                </p>
+                <div class="flex flex-col gap-4 justify-center items-center sm:flex-row">
+                    <a href="{{ $cta }}" class="inline-block px-6 py-3 text-base font-semibold text-white rounded-lg shadow bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-4 focus:ring-primary-300 transition">
+                        {{ .Site.Params.hero.cta_primary }}
+                    </a>
+                    <a href="/solutions/" class="inline-block px-6 py-3 text-base font-semibold text-gray-900 bg-white rounded-lg border border-gray-300 shadow-sm hover:bg-gray-50 dark:bg-gray-800 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 transition">
+                        {{ .Site.Params.hero.cta_secondary }}
+                    </a>
+                </div>
+                <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center mt-10 text-sm font-medium text-gray-600 dark:text-gray-300">
+                    {{ range .Site.Params.hero.support }}
+                    <span class="flex items-center">
+                        <svg class="mr-2 w-4 h-4 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        {{ . }}
+                    </span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- P1: What we build -->
+    <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-semibold tracking-wide text-primary-600 uppercase dark:text-primary-300">{{ .Site.Params.P1.Eyebrow }}</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{{ .Site.Params.P1.Heading }}</h2>
+            <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">{{ .Site.Params.P1.Intro }}</p>
+        </div>
+        <div class="grid gap-8 mt-12 md:grid-cols-3">
+            {{ range .Site.Params.P1.Solutions }}
+            <a href="{{ .url }}" class="flex flex-col p-8 h-full bg-white rounded-2xl border border-gray-200 shadow-sm transition group dark:bg-gray-800 dark:border-gray-700 hover:shadow-md hover:border-primary-300">
+                <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ .name }}</h3>
+                <p class="mt-2 text-lg font-semibold text-primary-600 dark:text-primary-400">{{ .tagline }}</p>
+                <p class="mt-4 text-base leading-7 text-gray-700 dark:text-gray-300">{{ .description }}</p>
+                <span class="mt-6 text-sm font-semibold text-primary-600 dark:text-primary-300">Learn more &rarr;</span>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <!-- P2: Why it's different -->
+    <div class="bg-gray-50 dark:bg-gray-900/40">
+        <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+            <div class="mx-auto max-w-3xl text-center">
+                <p class="text-sm font-semibold tracking-wide text-primary-600 uppercase dark:text-primary-300">{{ .Site.Params.P2.Eyebrow }}</p>
+                <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{{ .Site.Params.P2.Heading }}</h2>
+            </div>
+            <div class="grid gap-6 mt-12 sm:grid-cols-2">
+                {{ range .Site.Params.P2.Cards }}
+                <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ .heading }}</h3>
+                    <p class="mt-3 text-base leading-7 text-gray-700 dark:text-gray-300">{{ .text }}</p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- P3: How we work -->
+    <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div class="mx-auto max-w-3xl text-center">
+            <p class="text-sm font-semibold tracking-wide text-primary-600 uppercase dark:text-primary-300">{{ .Site.Params.P3.Eyebrow }}</p>
+            <h2 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">{{ .Site.Params.P3.Heading }}</h2>
+        </div>
+        <div class="grid gap-8 mt-12 md:grid-cols-3">
+            {{ range $i, $step := .Site.Params.P3.Steps }}
+            <div class="p-8 bg-white rounded-2xl border border-gray-200 shadow-sm dark:bg-gray-800 dark:border-gray-700">
+                <div class="flex justify-center items-center mb-4 w-10 h-10 text-lg font-bold text-white rounded-full bg-primary-600">{{ add $i 1 }}</div>
+                <h3 class="text-lg font-bold text-gray-900 dark:text-white">{{ $step.heading }}</h3>
+                <p class="mt-3 text-base leading-7 text-gray-700 dark:text-gray-300">{{ $step.text }}</p>
+            </div>
+            {{ end }}
+        </div>
+        {{ with .Site.Params.P3.Promise }}
+        <div class="p-6 mx-auto mt-10 max-w-3xl text-center rounded-xl border bg-primary-50 border-primary-200 dark:bg-primary-900/20 dark:border-primary-800">
+            <p class="text-base font-medium text-gray-900 dark:text-gray-100">{{ . }}</p>
+        </div>
+        {{ end }}
+    </div>
+
+    <!-- P4: Proof — Agent K -->
+    <div class="bg-gray-900">
+        <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+            <div class="grid gap-12 items-center lg:grid-cols-2">
+                <div>
+                    <p class="text-sm font-semibold tracking-wide text-primary-300 uppercase">{{ .Site.Params.P4.Eyebrow }}</p>
+                    <h2 class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">{{ .Site.Params.P4.Heading }}</h2>
+                    <p class="mt-4 text-lg leading-8 text-gray-300">{{ .Site.Params.P4.Text }}</p>
+                    <a href="{{ .Site.Params.P4.Link_url }}" class="inline-block mt-6 text-base font-semibold text-primary-300 hover:text-primary-200">{{ .Site.Params.P4.Link_text }} &rarr;</a>
+                </div>
+                <div class="p-8 rounded-2xl border shadow-xl bg-gray-800/80 border-gray-700">
+                    <p class="text-xs font-semibold tracking-wide text-primary-300 uppercase">{{ .Site.Params.P4.Card_eyebrow }}</p>
+                    <h3 class="mt-1 text-2xl font-bold text-white">{{ .Site.Params.P4.Card_title }}</h3>
+                    <ul class="mt-6 space-y-4">
+                        {{ range .Site.Params.P4.Card_points }}
+                        <li class="flex items-start text-gray-200">
+                            <svg class="mr-3 mt-0.5 w-5 h-5 flex-shrink-0 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+                            <span>{{ . }}</span>
+                        </li>
+                        {{ end }}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- P5: Final CTA -->
+    <div class="px-4 py-16 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-24">
+        <div class="overflow-hidden relative px-6 py-16 text-center rounded-2xl shadow-xl bg-primary-600 sm:px-12">
+            <p class="text-sm font-semibold tracking-wide text-primary-100 uppercase">{{ .Site.Params.P5.Eyebrow }}</p>
+            <h2 class="mx-auto mt-2 max-w-2xl text-3xl font-extrabold tracking-tight text-white sm:text-4xl">{{ .Site.Params.P5.Heading }}</h2>
+            <p class="mx-auto mt-4 max-w-2xl text-lg text-primary-100">{{ .Site.Params.P5.Text }}</p>
+            <div class="mt-8">
+                <a href="{{ $cta }}" class="inline-block px-8 py-3 text-base font-semibold text-gray-900 bg-white rounded-lg shadow hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-white/50 transition">
+                    {{ .Site.Params.P5.Button }}
+                </a>
+            </div>
+            {{ with .Site.Params.P5.Email_note }}
+            <p class="mt-4 text-sm text-primary-100">{{ . }}</p>
+            {{ end }}
+        </div>
+    </div>
+</main>
+{{ end }}

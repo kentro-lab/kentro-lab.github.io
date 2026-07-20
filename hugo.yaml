@@ -1,0 +1,214 @@
+baseURL: 'https://kentrolabs.ai/'
+title: Kentro AI Labs
+locale: en-us
+DefaultContentLanguage: en
+enableEmoji: true
+enableGitInfo: false
+enableRobotsTXT: true
+canonifyURLs: false
+pagination:
+  pagerSize: 9
+darkmode_js:
+  - assets/js/darkmode.js
+enableInlineShortcodes: true
+
+markup:
+  goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      linkifyProtocol: https
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer:
+        apostrophe: '&rsquo;'
+        disable: false
+        ellipsis: '&hellip;'
+        emDash: '&mdash;'
+        enDash: '&ndash;'
+        leftAngleQuote: '&laquo;'
+        leftDoubleQuote: '&ldquo;'
+        leftSingleQuote: '&lsquo;'
+        rightAngleQuote: '&raquo;'
+        rightDoubleQuote: '&rdquo;'
+        rightSingleQuote: '&rsquo;'
+    parser:
+      attribute:
+        block: false
+        title: true
+      autoHeadingID: true
+      autoHeadingIDType: github
+      wrapStandAloneImageWithinParagraph: true
+    renderer:
+      hardWraps: false
+      unsafe: true
+      xhtml: false
+
+params:
+  author: Kentro AI Labs
+  og_image: /images/site-logo.svg
+  moto: "Custom AI for construction and trades."
+  description: "Kentro AI Labs builds custom AI for construction and trades businesses. Trained on your jobs and connected to the tools you already use, it takes the back-office work off your team — so they can focus on the build."
+  disable_theme_toggle: false
+  newsletter_signup: false
+  email: "hello@kentrolabs.ai"
+  discovery_call_url: "mailto:hello@kentrolabs.ai?subject=Discovery%20call"
+
+  # --- Homepage sections ---
+
+  # Hero
+  hero:
+    eyebrow: "Custom AI for construction and trades"
+    heading_lead: "The paperwork, the questions, the chasing — "
+    heading_highlight: "handled."
+    support:
+      - "Built around your business"
+      - "You own it"
+      - "A person always stays in control"
+    cta_primary: "Book a discovery call"
+    cta_secondary: "See what we build"
+
+  # P1 — What we build (the three solutions)
+  p1:
+    eyebrow: "What we build"
+    heading: "Three kinds of custom AI, built around how you work."
+    intro: "Not an app you sign up for. We build each one around your business — your jobs, your subs, your systems — and connect it to the tools you already run."
+    solutions:
+      - name: "Document processing"
+        tagline: "Paperwork, handled."
+        description: "Invoices read, checked against your POs, and posted to QuickBooks — with your admin approving only the exceptions."
+        url: "/solutions/document-processing/"
+      - name: "AI assistants"
+        tagline: "An assistant that actually knows your business."
+        description: "Instant, sourced answers to what's the spec and what's the status — from your jobs, not the internet."
+        url: "/solutions/ai-assistants/"
+      - name: "AI agents"
+        tagline: "An AI teammate that does the routine work."
+        description: "Chases subs for lien waivers and insurance certs, collects and files them, and hands you only the exceptions."
+        url: "/solutions/ai-agents/"
+
+  # P2 — Why it's different
+  p2:
+    eyebrow: "Why it's different"
+    heading: "Not ChatGPT. Not another app. Yours."
+    cards:
+      - heading: "Trained on your business, not the internet."
+        text: "It knows your jobs, your subs, and your prices — because it learned from them."
+      - heading: "Works with your team."
+        text: "A person stays in control of anything that matters. Nothing important happens without you."
+      - heading: "Built around your tools."
+        text: "It fits into QuickBooks, your project software, and your email — no new system to learn."
+      - heading: "Yours to keep."
+        text: "You own what we build. It's your business, and it's your AI."
+
+  # P3 — How we work (replaces the demo investor/logo wall — no fake logos)
+  p3:
+    eyebrow: "How we work"
+    heading: "A clear path, a fixed price, no surprises."
+    steps:
+      - heading: "Discovery call"
+        text: "Free. We learn your business and tell you honestly where AI would help, and where it wouldn't."
+      - heading: "Build"
+        text: "A fixed scope and a fixed price, agreed in writing before we start. You own everything we build."
+      - heading: "Run it with you"
+        text: "We keep it working and improve it as your business changes."
+    promise: "Honest promise: if AI isn't worth it for your business yet, we'll tell you on the first call."
+
+  # P4 — Proof: Agent K (our only proof point)
+  p4:
+    eyebrow: "Proof"
+    heading: "We build and run AI in construction. Agent K is ours."
+    text: "Agent K is our own product — a voice-and-text app crews use on the job site to log photos and track issues, hands-free. It runs in real conditions, on real projects. The same standard goes into everything we build for you."
+    link_text: "See Agent K"
+    link_url: "/products/agent-k/"
+    card_eyebrow: "Live on job sites"
+    card_title: "Agent K"
+    card_points:
+      - "Voice and text photo logging, hands-free on site."
+      - "Issue tracking that crews actually use in the field."
+      - "Built and run by our team, in real construction conditions."
+
+  # P5 — Final CTA
+  p5:
+    eyebrow: "Get started"
+    heading: "See where AI could save your team the most time."
+    text: "Book a free discovery call. No jargon, no obligation — just an honest read on what's worth building."
+    button: "Book a discovery call"
+    email_note: "Prefer email? hello@kentrolabs.ai"
+
+menu:
+  main:
+    - identifier: whatwebuild
+      name: What we build
+      url: /solutions/
+      weight: 10
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 20
+    - identifier: agentk
+      name: Agent K
+      url: /products/agent-k/
+      weight: 30
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 40
+  footer:
+    - identifier: whatwebuild
+      name: What we build
+      url: /solutions/
+      weight: 10
+    - identifier: agentk
+      name: Agent K
+      url: /products/agent-k/
+      weight: 20
+    - identifier: about
+      name: About
+      url: /about/
+      weight: 30
+    - identifier: contact
+      name: Contact
+      url: /contact/
+      weight: 40
+    - identifier: privacy
+      name: Privacy
+      url: /kentro/privacy/
+      weight: 50
+    - identifier: terms
+      name: Terms
+      url: /kentro/terms/
+      weight: 60
+    - identifier: support
+      name: Support
+      url: /kentro/support/
+      weight: 70
+
+taxonomies:
+  category: Categories
+  tag: Tags
+
+module:
+  hugoVersion:
+    extended: true
+    min: "0.158.0"
+
+# Performance optimizations
+caches:
+  assets:
+    dir: ":cacheDir/assets"
+    maxAge: "0s"
+  images:
+    dir: ":cacheDir/images"
+    maxAge: "8760h"
+  modules:
+    dir: ":cacheDir/modules"
+    maxAge: "8760h"
+
+# Image processing defaults
+imaging:
+  quality: 85
+  resampleFilter: lanczos
+  anchor: smart
