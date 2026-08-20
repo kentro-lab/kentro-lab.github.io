@@ -1,0 +1,4 @@
+# Internal research, strategy docs, and draft pages.
+# Kept on disk, deliberately not tracked: the screenshot set alone is ~218 MB
+# and this repo exists to serve a 132 KB static site.
+_internal/
