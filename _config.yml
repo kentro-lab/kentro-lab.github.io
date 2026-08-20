@@ -1,0 +1,9 @@
+# GitHub Pages builds this repo with Jekyll and serves the committed HTML
+# verbatim (the pages carry no front matter, so they are copied, not rendered).
+#
+# _internal/ holds unpublished positioning, research, and draft landing pages.
+# Jekyll already skips underscore-prefixed directories by default, but that is
+# an implicit default; naming it here makes the exclusion explicit so the
+# directory cannot be published by accident.
+exclude:
+  - _internal
